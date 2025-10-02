@@ -1,3 +1,4 @@
+#==ACTIVITY 1==
 #Sentence with a horizontal tab
 print("This is the first part\tand this is after the tab.")
 
@@ -12,6 +13,7 @@ print(f"You entered: {user_input}")
 # print(' " Insert a double quote in a string e.g "cat" ')
 # print(' \' Insert a single quote in a string  e.g \'dog\' ')
 
+#==ACTIVITY 2==
 #Two modes of running Python:
 #   Interactive Mode: Type commands directly into the interpreter and get immediate results.
 #   Script Mode: Write code in a .py file and run the whole file at once.
@@ -30,6 +32,7 @@ example_bool = True
 example_list = [1, 2, 3, 4]
 example_set = {1, 2, 3}
 
+#==ACTIVITY 3==
 print(example_list)
 print(example_set)
 print(example_dict)
