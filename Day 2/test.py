@@ -13,12 +13,12 @@ print(' " Insert a double quote in a string e.g "cat" ')
 print(' \' Insert a single quote in a string  e.g \'dog\' ')
 
 #Two modes of running Python:
-#    Interactive Mode: Type commands directly into the interpreter and get immediate results.
-#    Script Mode: Write code in a .py file and run the whole file at once.
+#   Interactive Mode: Type commands directly into the interpreter and get immediate results.
+#   Script Mode: Write code in a .py file and run the whole file at once.
 
 #Difference between expression and statement:
-#    Expression: Produces a value (e.g., 2 + 3)
-#    Statement: Performs an action (e.g., print("Hello"), x = 5)
+#   Expression: Produces a value (e.g., 2 + 3)
+#   Statement: Performs an action (e.g., print("Hello"), x = 5)
 
 #Examples of each data type:
 example_string = "Hello, world!"
