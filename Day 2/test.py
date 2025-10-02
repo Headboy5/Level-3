@@ -29,3 +29,10 @@ example_tuple = (1, 2, 3)
 example_bool = True
 example_list = [1, 2, 3, 4]
 example_set = {1, 2, 3}
+
+print(example_list)
+print(example_set)
+print(example_dict)
+print(example_int)
+print(example_bool)
+print(example_float)
