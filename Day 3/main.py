@@ -25,9 +25,11 @@ print(OrderItem[0], OrderItem[2], OrderItem[4])
 # count() - This method returns the number of occurrences of a specified value in the list.
 
 # Give example of how the chosen three lists methods in question 2 can be used in a code.
-OrderItem = [1, "Jeff", "Computer", 75.50, True, "Jeff"]
-OrderItem.sort()
-print(OrderItem)
+OrderItem = [1, "Jeff", "Computer", 75.50, True, "Jeff", "Smart"]
+sortable = [3, 1, 4, 2]
+print(f"Original sortable: {sortable}")
+sortable.sort()
+print(f"Sorted sortable: {sortable}")
 OrderItem.pop()
-print(OrderItem)
-print(OrderItem.count("Jeff"))
+print(f"OrderItem after pop: {OrderItem}")
+print(f"Count of 'Jeff' in OrderItem: {OrderItem.count('Jeff')}")
