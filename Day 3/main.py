@@ -14,9 +14,20 @@ example_bytearray = bytearray(5)
 example_memoryview = memoryview(bytes(5))
 example_none = None
 
-# Binary Types: 	bytes, bytearray, memoryview
-# None Type: 	NoneType
-# print(example_bytes)
+#==ACTIVITY 1==
 
 OrderItem = [1, "Jeff", "Computer", 75.50, True]
 print(OrderItem[0], OrderItem[2], OrderItem[4])
+
+# Pick three out of the List Methods (sort, pop, extend, count, copy, clear, reverse) and explain what they do in one or two sentences.
+# sort() - This method sorts the elements of a list in ascending order by default. It modifies the original list.
+# pop() - This method removes and returns the last item from the list. You can also specify an index to remove an item at a specific position.
+# count() - This method returns the number of occurrences of a specified value in the list.
+
+# Give example of how the chosen three lists methods in question 2 can be used in a code.
+OrderItem = [1, "Jeff", "Computer", 75.50, True, "Jeff"]
+OrderItem.sort()
+print(OrderItem)
+OrderItem.pop()
+print(OrderItem)
+print(OrderItem.count("Jeff"))
