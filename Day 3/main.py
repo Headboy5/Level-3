@@ -33,3 +33,9 @@ print(f"Sorted sortable: {sortable}")
 OrderItem.pop()
 print(f"OrderItem after pop: {OrderItem}")
 print(f"Count of 'Jeff' in OrderItem: {OrderItem.count('Jeff')}")
+
+#==ACTIVITY 2==
+avengers = {'JoshBrolin': 'Thanos', 'Robertjunior': 'IronMan', 'Scarlett Johansson':'blackwidow'}
+new_avengers = {'Tom Holland': 'Spiderman', 'Chris Hemsworth': 'Thor', 'Chadwick Boseman': 'Black Panther', 'Mark Ruffalo': 'Hulk'}
+avengers.update(new_avengers)
+print(avengers)
