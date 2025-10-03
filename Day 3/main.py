@@ -8,9 +8,15 @@ example_tuple = (1, 2, 3)
 example_bool = True
 example_list = [1, 2, 3, 4]
 example_set = {1, 2, 3}
-# Sequence Types: 	list, tuple, range
-# Mapping Type: 	dict
-# Set Types: 	set, frozenset
-# Boolean Type: 	bool
+example_frozenset = frozenset({4, 5, 6})
+example_bytes = b"Hello"
+example_bytearray = bytearray(5)
+example_memoryview = memoryview(bytes(5))
+example_none = None
+
 # Binary Types: 	bytes, bytearray, memoryview
 # None Type: 	NoneType
+# print(example_bytes)
+
+OrderItem = [1, "Jeff", "Computer", 75.50, True]
+print(OrderItem[0], OrderItem[2], OrderItem[4])
