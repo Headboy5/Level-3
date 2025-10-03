@@ -39,3 +39,23 @@ print(example_dict)
 print(example_int)
 print(example_bool)
 print(example_float)
+
+#Set methods and difference example
+#1. add() - add item in the set
+a = {1, 2, 3, 4, 5, 6, 7, 8, "banana"}
+a.add("apple")
+print("After add:", a)
+
+#2. remove() - remove an item in the set
+a.remove(2)
+print("After remove:", a)
+
+#3. clear() - clear the content of the set
+a.clear()
+print("After clear:", a)
+
+# Find the difference between two sets using difference()
+a = {1, 4, 6, 7, 8, 33, 4, "banana", "apple"}
+b = {1, 2, 3, 4, 5, 6, 7, 8, "banana"}
+diff = a.difference(b)
+print("Difference between a and b:", diff)
