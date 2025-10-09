@@ -25,13 +25,13 @@ def triplePrint(a,b,c):
     print(c)
 
 def printNumber(num = 273):
-    print(num)
+    print(f"The number is {num}.")
 
 def secondFunction():
     print("Hello this is my second function")
 
 def printThird(a):
-    print(a[2])
+    print(f"The third item is {a[2]}.")
 
 cubeNumber = lambda x: x**3
 
@@ -39,9 +39,9 @@ def main():
     first_number = 2
     second_number = 3
     result = addFunction(first_number, second_number)
-    print(result)
+    print(f"The sum of {first_number} and {second_number} is: {result}.")
     result = divideFunction(first_number, second_number)
-    print(result)
+    print(f"{first_number} divided by {second_number} is: {result}.")
     greet("Kate")
     greet("John", "Good evening!")
     addNames("John", "Doe")
@@ -54,7 +54,8 @@ def main():
     printNumber(42)
     secondFunction()
     printThird(("First", "Second", "Third", "Fourth"))
-    print(cubeNumber(4))
+    print(f"4 cubed is {cubeNumber(4)}")
+    print(f"7 cubed is {cubeNumber(7)}")
 
 if __name__ == "__main__":
     main()
