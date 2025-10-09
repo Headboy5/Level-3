@@ -19,6 +19,22 @@ def repeatedPrint(msg, n):
     for _ in range(n):
         print(msg)
 
+def triplePrint(a,b,c):
+    print(a)
+    print(b)
+    print(c)
+
+def printNumber(num = 273):
+    print(num)
+
+def secondFunction():
+    print("Hello this is my second function")
+
+def printThird(a):
+    print(a[2])
+
+cubeNumber = lambda x: x**3
+
 def main():
     first_number = 2
     second_number = 3
@@ -33,6 +49,12 @@ def main():
     squared_value = squareFunction(toSquare)
     print(f"The square of {toSquare} is {squared_value}.")
     repeatedPrint("Hello World!", 3)
+    triplePrint("Apple", "Banana", "Cherry")
+    printNumber()
+    printNumber(42)
+    secondFunction()
+    printThird(("first", "second", "third", "fourth"))
+    print(cubeNumber(4))
 
 if __name__ == "__main__":
     main()
