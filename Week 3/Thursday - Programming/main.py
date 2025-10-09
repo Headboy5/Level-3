@@ -7,4 +7,5 @@ def main():
     result = addFunction(first_number, second_number)
     print(result)
 
-main()
+if __name__ == "__main__":
+    main()
