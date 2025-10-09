@@ -1,8 +1,8 @@
 def addFunction(a,b):
     return a + b
 
-# def greet(name, msg="Good morning!"):
-#     print("Hello", name + ', ' + msg)
+def greet(name, msg="Good morning!"):
+    print("Hello", name + ', ' + msg)
 
 def divideFunction(a, b):
     if b == 0:
@@ -26,8 +26,8 @@ def main():
     # print(result)
     result = divideFunction(first_number, second_number)
     print(result)
-    # greet("Kate")
-    # greet("John", "Good evening!")
+    greet("Kate")
+    greet("John", "Good evening!")
     addNames("John", "Doe")
     toSquare = 5
     squared_value = squareFunction(toSquare)
