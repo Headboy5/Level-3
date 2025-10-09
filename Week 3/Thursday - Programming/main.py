@@ -38,8 +38,8 @@ cubeNumber = lambda x: x**3
 def main():
     first_number = 2
     second_number = 3
-    # result = addFunction(first_number, second_number)
-    # print(result)
+    result = addFunction(first_number, second_number)
+    print(result)
     result = divideFunction(first_number, second_number)
     print(result)
     greet("Kate")
