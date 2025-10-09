@@ -53,7 +53,7 @@ def main():
     printNumber()
     printNumber(42)
     secondFunction()
-    printThird(("first", "second", "third", "fourth"))
+    printThird(("First", "Second", "Third", "Fourth"))
     print(cubeNumber(4))
 
 if __name__ == "__main__":
