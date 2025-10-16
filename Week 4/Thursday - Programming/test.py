@@ -15,6 +15,7 @@ c.sell()      # prints normal
 # change the price (this creates a new attribute, it won't change the "private" one)
 c.__maxprice = 1000
 c.sell()      # this will still print 900 because of name mangling
+print(c.__maxprice)  # prints 1000
 
 # using setter function
 c.setMaxPrice(1000)
