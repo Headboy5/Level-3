@@ -32,8 +32,8 @@ def squares():
 def test_squares():
     for s in squares():
         print(s)
-        # if s > 10:
-        #     break
+        if s > 10:
+            break
 
-# test_squares()
-# test()
+test_squares()
+test()
