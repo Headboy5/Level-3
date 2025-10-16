@@ -1,27 +1,26 @@
-# decorators/time.measure.deco1.py
+import time
+from functools import wraps
 
-from time import sleep, time
-
-def f(sleep_time=0.1):
-
-    sleep(sleep_time)
-
-def measure(func):
-
+def decoratorTimer(func):
+    @wraps(func)
     def wrapper(*args, **kwargs):
-
-        t = time()
-
-        func(*args, **kwargs)
-
-        print(func.__name__, 'took:', time() - t)
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Execution time: {end_time - start_time} seconds")
+        return result
 
     return wrapper
 
-f = measure(f)  # decoration point
+@decoratorTimer
+def test():
+    from main import Human
+    john = Human("John", 30, "5'9\"", "70 kg")
+    print(john.eat("apple", 0.5))
+    print(john.sleep(8))
+    print(john.exercise("running", 1))
+    print(f"Name: {john.name}, Age: {john.age}, Height: {john.height}, Weight: {john.weight} kg")
+    from main import main
+    main()
 
-f(0.2)  # f took: 0.20372915267944336
-
-f(sleep_time=0.3)  # f took: 0.30455899238586426
-
-print(f.__name__)  # wrapper <- ouch!
+test()

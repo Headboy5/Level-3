@@ -1,184 +1,192 @@
-def main():
-    # ==ACTIVITY 1==
 
-    # Class: Smartphone
+# ==ACTIVITY 1==
 
-    # Attributes
-    # brand
-    # battery_level
-    # storage_capacity
+# Class: Smartphone
 
-    # Methods
-    # take_photo()
-    # make_call()
-    # install_app()
+# Attributes
+# brand
+# battery_level
+# storage_capacity
 
-
-    # Class: Candle
-
-    # Attributes
-    # color
-    # scent
-    # burn_time
-
-    # Methods
-    # light()
-    # extinguish()
-    # melt()
+# Methods
+# take_photo()
+# make_call()
+# install_app()
 
 
-    # Class: Backpack
+# Class: Candle
 
-    # Attributes
-    # size
-    # color
-    # weight_capacity
+# Attributes
+# color
+# scent
+# burn_time
 
-    # Methods
-    # open()
-    # close()
-    # add_item()
+# Methods
+# light()
+# extinguish()
+# melt()
 
-    #==ACTIVITY 2==
-    class Human:
-        def __init__(self, name, age, height, weight):
-            self.name = name
-            self.age = age
-            self.height = height
-            if isinstance(weight, str):
-                if "kg" in weight:
-                    self.weight = float(weight.split()[0])
-                elif "lbs" in weight:
-                    self.weight = float(weight.split()[0]) * 0.453592
-                else:
-                    self.weight = float(weight)
-            elif isinstance(weight, (int, float)):
-                self.weight = float(weight)
+
+# Class: Backpack
+
+# Attributes
+# size
+# color
+# weight_capacity
+
+# Methods
+# open()
+# close()
+# add_item()
+
+#==ACTIVITY 2==
+from pdb import main
+
+
+class Human:
+    def __init__(self, name, age, height, weight):
+        self.name = name
+        self.age = age
+        self.height = height
+        if isinstance(weight, str):
+            if "kg" in weight:
+                self.weight = float(weight.split()[0])
+            elif "lbs" in weight:
+                self.weight = float(weight.split()[0]) * 0.453592
             else:
-                self.weight = 0
+                self.weight = float(weight)
+        elif isinstance(weight, (int, float)):
+            self.weight = float(weight)
+        else:
+            self.weight = 0
 
-        def eat(self, food, weightgain=0):
-            self.weight += weightgain
-            if weightgain > 0:
-                return f"{self.name} is eating {food} and gained {weightgain} kgs."
-            return f"{self.name} is eating {food}."
+    def eat(self, food, weightgain=0):
+        self.weight += weightgain
+        if weightgain > 0:
+            return f"{self.name} is eating {food} and gained {weightgain} kgs."
+        return f"{self.name} is eating {food}."
 
-        def sleep(self, hours):
-            return f"{self.name} is sleeping for {hours} hours."
+    def sleep(self, hours):
+        return f"{self.name} is sleeping for {hours} hours."
 
-        def exercise(self, activity, weightloss=0):
-            self.weight -= weightloss
-            if weightloss > 0:
-                return f"{self.name} is exercising by {activity} and lost {weightloss} kgs."
-            return f"{self.name} is exercising by {activity}."
+    def exercise(self, activity, weightloss=0):
+        self.weight -= weightloss
+        if weightloss > 0:
+            return f"{self.name} is exercising by {activity} and lost {weightloss} kgs."
+        return f"{self.name} is exercising by {activity}."
 
+def make_human():
     person = Human("Alice", 30, "5'6\"", "80.3 kg")
     print(person.eat("pasta" , 2))
     print(person.sleep(8))
     print(person.exercise("running", 1.5))
     print(f"Name: {person.name}, Age: {person.age}, Height: {person.height}, Weight: {person.weight} kg")
 
-    class Bird:
-        def __init__(self, species, color, wing_span, age=0):
-            self.species = species
-            self.color = color
-            self.wing_span = wing_span
-            self.age = age
-            self.has_nest = False
+class Bird:
+    def __init__(self, species, color, wing_span, age=0):
+        self.species = species
+        self.color = color
+        self.wing_span = wing_span
+        self.age = age
+        self.has_nest = False
 
-        def fly(self):
-            return f"The {self.color} {self.species} is flying."
+    def fly(self):
+        return f"The {self.color} {self.species} is flying."
 
-        def sing(self):
-            return f"The {self.color} {self.species} is singing."
+    def sing(self):
+        return f"The {self.color} {self.species} is singing."
 
-        def build_nest(self):
-            self.has_nest = True
-            return f"The {self.color} {self.species} is building a nest."
+    def build_nest(self):
+        self.has_nest = True
+        return f"The {self.color} {self.species} is building a nest."
 
+def make_bird():
     robin = Bird("robin", "red", "30 cm")
     print(robin.fly())
     print(robin.sing())
     print(robin.build_nest())
     print(f"Species: {robin.species}, Color: {robin.color}, Wing Span: {robin.wing_span}, Has Nest: {robin.has_nest}")
 
-    #==ACTIVITY 3==
-    class Car:
-        def __init__(self, make, model, year, mileage=0, passengers=0):
-            self.make = make
-            self.model = model
-            self.year = year
-            self.mileage = mileage
-            self.passengers = passengers
+#==ACTIVITY 3==
+class Car:
+    def __init__(self, make, model, year, mileage=0, passengers=0):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.mileage = mileage
+        self.passengers = passengers
 
-        def drive(self, distance):
-            self.mileage += distance
-            return f"The {self.year} {self.make} {self.model} drove {distance} km."
+    def drive(self, distance):
+        self.mileage += distance
+        return f"The {self.year} {self.make} {self.model} drove {distance} km."
 
-        def service(self):
-            return f"The {self.year} {self.make} {self.model} is being serviced."
+    def service(self):
+        return f"The {self.year} {self.make} {self.model} is being serviced."
 
-        def display_info(self):
-            return f"Car Info: {self.year} {self.make} {self.model}, Mileage: {self.mileage} km."
+    def display_info(self):
+        return f"Car Info: {self.year} {self.make} {self.model}, Mileage: {self.mileage} km."
 
-        def get_passenger_count(self):
-            # print(f"The {self.year} {self.make} {self.model} has {self.passengers} passengers.")
-            return self.passengers
-        
-        def get_model(self):
-            return self.model
+    def get_passenger_count(self):
+        # print(f"The {self.year} {self.make} {self.model} has {self.passengers} passengers.")
+        return self.passengers
+    
+    def get_model(self):
+        return self.model
 
+def make_car():
     my_car = Car("Toyota", "Camry", 2020, passengers=4)
     print(f"Passenger Count: {my_car.get_passenger_count()}")
     print(f"Model: {my_car.get_model()}")
 
-    class Parrot(Bird):
-        def __init__(self, species, color, wing_span, Name, vocabulary=None):
-            super().__init__(species, color, wing_span)
-            if vocabulary is None:
-                self.vocabulary = []
-            else:
-                self.vocabulary = vocabulary
-            self.name = Name
+class Parrot(Bird):
+    def __init__(self, species, color, wing_span, Name, vocabulary=None):
+        super().__init__(species, color, wing_span)
+        if vocabulary is None:
+            self.vocabulary = []
+        else:
+            self.vocabulary = vocabulary
+        self.name = Name
 
-        def learn_word(self, word):
-            self.vocabulary.append(word)
-            return f"The {self.color} {self.species} learned the word '{word}'."
+    def learn_word(self, word):
+        self.vocabulary.append(word)
+        return f"The {self.color} {self.species} learned the word '{word}'."
 
-        def speak(self):
-            if self.vocabulary:
-                return f"The {self.color} {self.species} says: " + ", ".join(self.vocabulary)
-            return f"The {self.color} {self.species} has nothing to say."
+    def speak(self):
+        if self.vocabulary:
+            return f"The {self.color} {self.species} says: " + ", ".join(self.vocabulary)
+        return f"The {self.color} {self.species} has nothing to say."
 
-        def set_name(self, name):
-            self.name = name
-        def set_age(self, age):
-            self.age = age
+    def set_name(self, name):
+        self.name = name
+    def set_age(self, age):
+        self.age = age
 
+def make_parrot():
     polly = Parrot("parrot", "green", "25 cm", "Polly")
     polly.set_name("Poli")
     polly.set_age(2)
     print(f"Name: {polly.name}")
     print(f"Age: {polly.age}")
 
-    class Pencil:
-        def __init__(self, brand, color, sharpness=100):
-            self.brand = brand
-            self.color = color
-            self.__sharpness = sharpness
+class Pencil:
+    def __init__(self, brand, color, sharpness=100):
+        self.brand = brand
+        self.color = color
+        self.__sharpness = sharpness
 
-        def write(self, text):
-            if self.__sharpness == 0:
-                return f"The {self.color} pencil is too dull to write."
-            return f"Wrote '{text}' with {self.color} pencil."
+    def write(self, text):
+        if self.__sharpness == 0:
+            return f"The {self.color} pencil is too dull to write."
+        return f"Wrote '{text}' with {self.color} pencil."
 
-        def sharpen(self):
-            self.__sharpness = 100
-            return f"The {self.color} pencil has been sharpened."
+    def sharpen(self):
+        self.__sharpness = 100
+        return f"The {self.color} pencil has been sharpened."
 
-        def get_sharpness(self):
-            return self.__sharpness
-    
+    def get_sharpness(self):
+        return self.__sharpness
+
+def make_pencil():
     my_pencil = Pencil("Dixon", "yellow", 50)
     print(my_pencil.write("Hello, World!"))
     print(f"Sharpness: {my_pencil.get_sharpness()}")
@@ -188,6 +196,12 @@ def main():
     print(f"Sharpness: {my_pencil.get_sharpness()}")  # Should still print 100
     print(f"Incorrect Sharpness: {my_pencil.sharpness}")  # This will print 10, the new attribute
 
+def main():
+    make_human()
+    make_bird()
+    make_car()
+    make_parrot()
+    make_pencil()
 
 if __name__ == "__main__":
     main()
