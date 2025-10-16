@@ -23,4 +23,17 @@ def test():
     from main import main
     main()
 
-test()
+
+def squares():
+    for i in range(1_000_000):
+        yield i * i
+
+@decoratorTimer
+def test_squares():
+    for s in squares():
+        print(s)
+        # if s > 10:
+        #     break
+
+# test_squares()
+# test()
