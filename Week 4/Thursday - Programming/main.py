@@ -109,8 +109,8 @@ def make_bird():
 
 #==ACTIVITY 3==
 class Car:
-    def __init__(self, make, model, year, mileage=0, passengers=0):
-        self.make = make
+    def __init__(self, brand, model, year, mileage=0, passengers=0):
+        self.brand = brand
         self.model = model
         self.year = year
         self.mileage = mileage
@@ -118,16 +118,16 @@ class Car:
 
     def drive(self, distance):
         self.mileage += distance
-        return f"The {self.year} {self.make} {self.model} drove {distance} km."
+        return f"The {self.year} {self.brand} {self.model} drove {distance} km."
 
     def service(self):
-        return f"The {self.year} {self.make} {self.model} is being serviced."
+        return f"The {self.year} {self.brand} {self.model} is being serviced."
 
     def display_info(self):
-        return f"Car Info: {self.year} {self.make} {self.model}, Mileage: {self.mileage} km."
+        return f"Car Info: {self.year} {self.brand} {self.model}, Mileage: {self.mileage} km."
 
     def get_passenger_count(self):
-        # print(f"The {self.year} {self.make} {self.model} has {self.passengers} passengers.")
+        # print(f"The {self.year} {self.brand} {self.model} has {self.passengers} passengers.")
         return self.passengers
     
     def get_model(self):
