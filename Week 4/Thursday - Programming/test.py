@@ -1,22 +1,27 @@
-class Computer(object):
-	def __init__(self):
-		self.__maxprice = 900  # restrict access/no modification
+# decorators/time.measure.deco1.py
 
-	def sell(self):
-		print("Selling Price: {}".format(self.__maxprice))
+from time import sleep, time
 
-	def setMaxPrice(self, price):
-		self.__maxprice = price
+def f(sleep_time=0.1):
 
-# Output:
-c = Computer()
-c.sell()      # prints normal
+    sleep(sleep_time)
 
-# change the price (this creates a new attribute, it won't change the "private" one)
-c.__maxprice = 1000
-c.sell()      # this will still print 900 because of name mangling
-print(c.__maxprice)  # prints 1000
+def measure(func):
 
-# using setter function
-c.setMaxPrice(1000)
-c.sell()
+    def wrapper(*args, **kwargs):
+
+        t = time()
+
+        func(*args, **kwargs)
+
+        print(func.__name__, 'took:', time() - t)
+
+    return wrapper
+
+f = measure(f)  # decoration point
+
+f(0.2)  # f took: 0.20372915267944336
+
+f(sleep_time=0.3)  # f took: 0.30455899238586426
+
+print(f.__name__)  # wrapper <- ouch!

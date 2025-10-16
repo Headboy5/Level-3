@@ -149,16 +149,44 @@ def main():
             if self.vocabulary:
                 return f"The {self.color} {self.species} says: " + ", ".join(self.vocabulary)
             return f"The {self.color} {self.species} has nothing to say."
-        
-        def get_name(self):
-            return self.name
-        def get_age(self):
-            return self.age
-        
-    polly = Parrot("parrot", "green", "25 cm", "Polly")
-    print(polly.get_name())
-    print(polly.get_age())
 
+        def set_name(self, name):
+            self.name = name
+        def set_age(self, age):
+            self.age = age
+
+    polly = Parrot("parrot", "green", "25 cm", "Polly")
+    polly.set_name("Poli")
+    polly.set_age(2)
+    print(f"Name: {polly.name}")
+    print(f"Age: {polly.age}")
+
+    class Pencil:
+        def __init__(self, brand, color, sharpness=100):
+            self.brand = brand
+            self.color = color
+            self.__sharpness = sharpness
+
+        def write(self, text):
+            if self.__sharpness == 0:
+                return f"The {self.color} pencil is too dull to write."
+            return f"Wrote '{text}' with {self.color} pencil."
+
+        def sharpen(self):
+            self.__sharpness = 100
+            return f"The {self.color} pencil has been sharpened."
+
+        def get_sharpness(self):
+            return self.__sharpness
+    
+    my_pencil = Pencil("Dixon", "yellow", 50)
+    print(my_pencil.write("Hello, World!"))
+    print(f"Sharpness: {my_pencil.get_sharpness()}")
+    print(my_pencil.sharpen())
+    print(f"Sharpness: {my_pencil.get_sharpness()}")
+    my_pencil.sharpness = 10  # This won't affect the private attribute
+    print(f"Sharpness: {my_pencil.get_sharpness()}")  # Should still print 100
+    print(f"Incorrect Sharpness: {my_pencil.sharpness}")  # This will print 10, the new attribute
 
 
 if __name__ == "__main__":
