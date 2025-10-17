@@ -23,7 +23,7 @@ class Property:
         self.owner: Optional[Player] = None
 
     def rent(self, **kwargs) -> int:
-        """Polymorphic method: subclasses implement their own rent logic."""
+        # """Polymorphic method: subclasses implement their own rent logic."""
         raise NotImplementedError
 
     def owner_name(self):
@@ -34,7 +34,7 @@ class Property:
 
 
 class Street(Property):
-    # Street rent depends on how many houses (0..4) or hotel (houses=5).
+    # Street rent depends on how many houses (0-4) or hotel (houses=5).
     HOUSE_MULTIPLIER = {0: 1, 1: 5, 2: 15, 3: 45, 4: 125, 5: 400}
 
     def __init__(self, name: str, price: int, base_rent: int, houses: int = 0):
