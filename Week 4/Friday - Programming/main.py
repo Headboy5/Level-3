@@ -60,9 +60,36 @@ def test_employee():
     emp.display_info()
     print(f"Generated Password: {emp.make_password()}")
 
+#==Activity 2==
+class Circle():
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+    
+    def __mul__(self, other):
+        return Circle(self.radius * other.radius)
+    
+    def __gt__(self, other):
+        return self.radius > other.radius
+
+def test_circle():
+    C1 = Circle(3)
+    print(f"C1: {C1.radius}")
+    C2 = Circle(4)
+    print(f"C2: {C2.radius}")
+    C3 = C1 * C2
+    print(f"Area of Circle with radius {C3.radius}: {C3.area()}")
+    if C1 > C2:
+        print("C1 is larger than C2")
+    else:
+        print("C2 is larger than C1")
+
 def main():
     test_tv()
     test_employee()
+    test_circle()
 
 if __name__ == "__main__":
     main()
