@@ -86,10 +86,76 @@ def test_circle():
     else:
         print("C2 is larger than C1")
 
+#==ACTIVITY 3==
+class Bird:
+    def __init__(self, species):
+        self.species = species
+
+class Pigeon(Bird):
+    def fly(self):
+        print(f"The {self.species} is flying.")
+    
+    def eat(self):
+        print(f"The {self.species} is eating.")
+
+    def run(self):
+        print(f"The {self.species} is running.")
+
+class Sparrow(Bird):
+    def fly(self):
+        print(f"The {self.species} is flapping its wings.")
+
+    def eat(self):
+        print(f"The {self.species} is eating food.")
+
+    def run(self):
+        print(f"The {self.species} is running fast.")
+
+def test_bird():
+    pigeon = Pigeon("Pigeon")
+    sparrow = Sparrow("Sparrow")
+    for bird in (pigeon, sparrow):
+        bird.fly()
+        bird.eat()
+        bird.run()
+
+class Plane:
+    def __init__(self, model, passengers):
+        self.model = model
+        self.passengers = passengers
+
+    def take_off(self):
+        print(f"The {self.model} is taking off.")
+    
+    def show_passengers(self):
+        print(f"The {self.model} has {self.passengers} passengers.")
+
+    def land(self):
+        print(f"The {self.model} is landing.")
+
+class FighterJet(Plane):
+    def let_passengers_off(self):
+        print(f"The {self.passengers} pilot is getting off.")
+
+class Aeroplane(Plane):
+    def let_passengers_off(self):
+        print(f"The {self.passengers} passengers are getting off.")
+
+def test_plane():
+    jet = FighterJet("F-16", 1)
+    aero = Aeroplane("Boeing 747", 300)
+    for plane in (jet, aero):
+        plane.take_off()
+        plane.show_passengers()
+        plane.land()
+        plane.let_passengers_off()
+
 def main():
     test_tv()
     test_employee()
     test_circle()
+    test_bird()
+    test_plane()
 
 if __name__ == "__main__":
     main()
