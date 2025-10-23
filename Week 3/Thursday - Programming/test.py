@@ -1,5 +1,39 @@
-newfunction = lambda x: x * 2
-print(newfunction(5))
+import time
+from functools import wraps
 
-twoarguments = lambda x, y: x * 2 + y
-print(twoarguments(5, 6))
+def decoratorTimer(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Execution time: {end_time - start_time} seconds")
+        return result
+
+    return wrapper
+
+@decoratorTimer
+def test():
+    from main import Human
+    john = Human("John", 30, "5'9\"", "70 kg")
+    print(john.eat("apple", 0.5))
+    print(john.sleep(8))
+    print(john.exercise("running", 1))
+    print(f"Name: {john.name}, Age: {john.age}, Height: {john.height}, Weight: {john.weight} kg")
+    from main import main
+    main()
+
+
+def squares():
+    for i in range(1_000_000):
+        yield i * i
+
+@decoratorTimer
+def test_squares():
+    for s in squares():
+        print(s)
+        if s > 10:
+            break
+
+test_squares()
+test()

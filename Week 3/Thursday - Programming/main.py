@@ -1,61 +1,207 @@
-def addFunction(a,b):
-    return a + b
 
-def greet(name, msg="Good morning!"):
-    print("Hello", name + ', ' + msg)
+# ==ACTIVITY 1==
 
-def divideFunction(a, b):
-    if b == 0:
-        return "Error: Division by zero"
-    return a / b
+# Class: Smartphone
 
-def addNames(name1, name2):
-    print(f"My name is {name1} {name2}.")
+# Attributes
+# brand
+# battery_level
+# storage_capacity
 
-def squareFunction(x):
-    return x**2
+# Methods
+# take_photo()
+# make_call()
+# install_app()
 
-def repeatedPrint(msg, n):
-    for _ in range(n):
-        print(msg)
 
-def triplePrint(a,b,c):
-    print(a)
-    print(b)
-    print(c)
+# Class: Candle
 
-def printNumber(num = 273):
-    print(f"The number is {num}.")
+# Attributes
+# color
+# scent
+# burn_time
 
-def secondFunction():
-    print("Hello this is my second function")
+# Methods
+# light()
+# extinguish()
+# melt()
 
-def printThird(a):
-    print(f"The third item is {a[2]}.")
 
-cubeNumber = lambda x: x**3
+# Class: Backpack
+
+# Attributes
+# size
+# color
+# weight_capacity
+
+# Methods
+# open()
+# close()
+# add_item()
+
+#==ACTIVITY 2==
+from pdb import main
+
+
+class Human:
+    def __init__(self, name, age, height, weight):
+        self.name = name
+        self.age = age
+        self.height = height
+        if isinstance(weight, str):
+            if "kg" in weight:
+                self.weight = float(weight.split()[0])
+            elif "lbs" in weight:
+                self.weight = float(weight.split()[0]) * 0.453592
+            else:
+                self.weight = float(weight)
+        elif isinstance(weight, (int, float)):
+            self.weight = float(weight)
+        else:
+            self.weight = 0
+
+    def eat(self, food, weightgain=0):
+        self.weight += weightgain
+        if weightgain > 0:
+            return f"{self.name} is eating {food} and gained {weightgain} kgs."
+        return f"{self.name} is eating {food}."
+
+    def sleep(self, hours):
+        return f"{self.name} is sleeping for {hours} hours."
+
+    def exercise(self, activity, weightloss=0):
+        self.weight -= weightloss
+        if weightloss > 0:
+            return f"{self.name} is exercising by {activity} and lost {weightloss} kgs."
+        return f"{self.name} is exercising by {activity}."
+
+def make_human():
+    person = Human("Alice", 30, "5'6\"", "80.3 kg")
+    print(person.eat("pasta" , 2))
+    print(person.sleep(8))
+    print(person.exercise("running", 1.5))
+    print(f"Name: {person.name}, Age: {person.age}, Height: {person.height}, Weight: {person.weight} kg")
+
+class Bird:
+    def __init__(self, species, color, wing_span, age=0):
+        self.species = species
+        self.color = color
+        self.wing_span = wing_span
+        self.age = age
+        self.has_nest = False
+
+    def fly(self):
+        return f"The {self.color} {self.species} is flying."
+
+    def sing(self):
+        return f"The {self.color} {self.species} is singing."
+
+    def build_nest(self):
+        self.has_nest = True
+        return f"The {self.color} {self.species} is building a nest."
+
+def make_bird():
+    robin = Bird("robin", "red", "30 cm")
+    print(robin.fly())
+    print(robin.sing())
+    print(robin.build_nest())
+    print(f"Species: {robin.species}, Color: {robin.color}, Wing Span: {robin.wing_span}, Has Nest: {robin.has_nest}")
+
+#==ACTIVITY 3==
+class Car:
+    def __init__(self, brand, model, year, mileage=0, passengers=0):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.mileage = mileage
+        self.passengers = passengers
+
+    def drive(self, distance):
+        self.mileage += distance
+        return f"The {self.year} {self.brand} {self.model} drove {distance} km."
+
+    def service(self):
+        return f"The {self.year} {self.brand} {self.model} is being serviced."
+
+    def display_info(self):
+        return f"Car Info: {self.year} {self.brand} {self.model}, Mileage: {self.mileage} km."
+
+    def get_passenger_count(self):
+        # print(f"The {self.year} {self.brand} {self.model} has {self.passengers} passengers.")
+        return self.passengers
+    
+    def get_model(self):
+        return self.model
+
+def make_car():
+    my_car = Car("Toyota", "Camry", 2020, passengers=4)
+    print(f"Passenger Count: {my_car.get_passenger_count()}")
+    print(f"Model: {my_car.get_model()}")
+
+class Parrot(Bird):
+    def __init__(self, species, color, wing_span, Name, vocabulary=None):
+        super().__init__(species, color, wing_span)
+        if vocabulary is None:
+            self.vocabulary = []
+        else:
+            self.vocabulary = vocabulary
+        self.name = Name
+
+    def learn_word(self, word):
+        self.vocabulary.append(word)
+        return f"The {self.color} {self.species} learned the word '{word}'."
+
+    def speak(self):
+        if self.vocabulary:
+            return f"The {self.color} {self.species} says: " + ", ".join(self.vocabulary)
+        return f"The {self.color} {self.species} has nothing to say."
+
+    def set_name(self, name):
+        self.name = name
+    def set_age(self, age):
+        self.age = age
+
+def make_parrot():
+    polly = Parrot("parrot", "green", "25 cm", "Polly")
+    polly.set_name("Poli")
+    polly.set_age(2)
+    print(f"Name: {polly.name}")
+    print(f"Age: {polly.age}")
+
+class Pencil:
+    def __init__(self, brand, color, sharpness=100):
+        self.brand = brand
+        self.color = color
+        self.__sharpness = sharpness
+
+    def write(self, text):
+        if self.__sharpness == 0:
+            return f"The {self.color} pencil is too dull to write."
+        return f"Wrote '{text}' with {self.color} pencil."
+
+    def sharpen(self):
+        self.__sharpness = 100
+        return f"The {self.color} pencil has been sharpened."
+
+    def get_sharpness(self):
+        return self.__sharpness
+
+def make_pencil():
+    my_pencil = Pencil("Dixon", "yellow", 50)
+    print(my_pencil.write("Hello, World!"))
+    print(f"Sharpness: {my_pencil.get_sharpness()}")
+    print(my_pencil.sharpen())
+    print(f"Sharpness: {my_pencil.get_sharpness()}")
+    my_pencil.sharpness = 10  # This won't affect the private attribute
+    print(f"Sharpness: {my_pencil.get_sharpness()}")  # Should still print 100
+    print(f"Incorrect Sharpness: {my_pencil.sharpness}")  # This will print 10, the new attribute
 
 def main():
-    first_number = 2
-    second_number = 3
-    result = addFunction(first_number, second_number)
-    print(f"The sum of {first_number} and {second_number} is: {result}.")
-    result = divideFunction(first_number, second_number)
-    print(f"{first_number} divided by {second_number} is: {result}.")
-    greet("Kate")
-    greet("John", "Good evening!")
-    addNames("John", "Doe")
-    toSquare = 5
-    squared_value = squareFunction(toSquare)
-    print(f"The square of {toSquare} is {squared_value}.")
-    repeatedPrint("Hello World!", 3)
-    triplePrint("Apple", "Banana", "Cherry")
-    printNumber()
-    printNumber(42)
-    secondFunction()
-    printThird(("First", "Second", "Third", "Fourth"))
-    print(f"4 cubed is {cubeNumber(4)}")
-    print(f"7 cubed is {cubeNumber(7)}")
+    make_human()
+    make_bird()
+    make_car()
+    make_parrot()
+    make_pencil()
 
 if __name__ == "__main__":
     main()
