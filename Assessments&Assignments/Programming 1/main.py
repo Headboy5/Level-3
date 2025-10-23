@@ -1,10 +1,12 @@
 class BankAccount:
+    # Initialize the class
     def __init__(self, account_number, account_holder, sort_code, balance=0):
         self.account_number = account_number
         self.account_holder = account_holder
         self._balance = balance
         self.sort_code = sort_code
 
+    # Deposit method
     def deposit(self, amount):
         if amount > 0:
             self._balance += amount
@@ -12,6 +14,7 @@ class BankAccount:
         else:
             print("Deposit amount must be positive.")
 
+    # Withdraw method
     def withdraw(self, amount):
         if amount > 0:
             if amount <= self._balance:
@@ -23,13 +26,15 @@ class BankAccount:
             print("Withdrawal amount must be positive.")
 
     def get_balance(self):
-        return self.balance
-    
+        return self._balance
+
+    # Display account information
     def display_account_info(self):
         print(f"Account Number: {self.account_number}")
         print(f"Account Holder: {self.account_holder}")
         print(f"Sort Code: {self.sort_code}")
 
+    # Create a bank card
     def create_card(self):
         BankCard = {
             "card_number": "1234 5678 9012 3456",
@@ -108,6 +113,7 @@ def bank():
 
 def main():
     # Error handling and restart mechanism
+    exit = False
     try:
         exit = bank()
     except Exception as e:
