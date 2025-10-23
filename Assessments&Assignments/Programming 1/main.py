@@ -44,7 +44,7 @@ class BankAccount:
     def PhoneNumber(self, phone_number):
         self.phone_number = phone_number
 
-def main():
+def bank():
     account = BankAccount("12345678", "John Doe", "12-34-56", 1000)
     exit = False
     # Menu loop
@@ -100,9 +100,24 @@ def main():
         elif choice == '8':
             exit = True
             print("Exiting...")
+            return True
         # Invalid Option
         else:
             print("Invalid option. Please try again.")
+            input("Press Enter to continue...")
+
+def main():
+    # Error handling and restart mechanism
+    try:
+        exit = bank()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        if exit == False:
+            if input("Would you like to restart the program? (y/n): ").lower() == 'y':
+                main()
+            else:
+                print("Program terminated.")
 
 if __name__ == "__main__":
     main()
