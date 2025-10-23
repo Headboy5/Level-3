@@ -47,6 +47,7 @@ class BankAccount:
 def main():
     account = BankAccount("12345678", "John Doe", "12-34-56", 1000)
     exit = False
+    # Menu loop
     while not exit:
         print("\nMenu:")
         print("1. Deposit")
@@ -60,37 +61,46 @@ def main():
         
         choice = input("Choose an option: ")
         
+        # Deposit
         if choice == '1':
             amount = float(input("Enter amount to deposit: £"))
             account.deposit(amount)
             input("Press Enter to continue...")
+        # Withdraw
         elif choice == '2':
             amount = float(input("Enter amount to withdraw: £"))
             account.withdraw(amount)
             input("Press Enter to continue...")
+        # Check Balance
         elif choice == '3':
             print(f"Current Balance: £{account.get_balance():.2f}")
             input("Press Enter to continue...")
+        # Display Account Info
         elif choice == '4':
             account.display_account_info()
             input("Press Enter to continue...")
+        # Create Bank Card
         elif choice == '5':
             card = account.create_card()
             print(f"Bank Card Created: {card}")
             input("Press Enter to continue...")
+        # Register Address
         elif choice == '6':
             address = input("Enter your address: ")
             account.RegisterAddress(address)
             print("Address registered.")
             input("Press Enter to continue...")
+        # Register Phone Number
         elif choice == '7':
             phone_number = input("Enter your phone number: ")
             account.PhoneNumber(phone_number)
             print("Phone number registered.")
             input("Press Enter to continue...")
+        # Exit
         elif choice == '8':
             exit = True
             print("Exiting...")
+        # Invalid Option
         else:
             print("Invalid option. Please try again.")
 
