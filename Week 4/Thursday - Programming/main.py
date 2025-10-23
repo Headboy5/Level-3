@@ -49,6 +49,7 @@ def test_tv():
     tv.showDisplay()
     tv.displayInfo()
 
+#Main
 def main():
     test_dog()
     test_tv()
