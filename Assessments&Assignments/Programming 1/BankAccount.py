@@ -5,7 +5,7 @@ from faker.providers import credit_card
 
 class BankAccount:
     # Initialize the class
-    def __init__(self, account_number, account_holder, sort_code, balance=0):
+    def __init__(self, account_number = 0, account_holder = "N/A", sort_code = "00-00-00", balance = 0):
         self.account_number = account_number
         self.account_holder = account_holder
         # _balance is treated as a "protected" attribute (leading underscore)
@@ -16,10 +16,10 @@ class BankAccount:
         self.faker.add_provider(credit_card)
 
     def create_account(self):
-        # Allow the user to create an account by entering details
+        # Create a new account by prompting the user (keep it simple and explicit)
         name = input("Enter account holder name (or leave blank for a random name): ").strip()
         if not name:
-            name = self.faker.name()
+            name = fk().name()
         sort_code = input("Enter sort code (or leave blank for auto-generated): ").strip()
         if not sort_code:
             sort_code = f"{r.randint(10, 99)}-{r.randint(10, 99)}-{r.randint(10, 99)}"
@@ -54,6 +54,23 @@ class BankAccount:
 
     def get_balance(self):
         return self._balance
+
+    # Simple getters/setters to demonstrate encapsulation (assignment requirement)
+    def get_account_holder(self):
+        return self.account_holder
+
+    def set_account_holder(self, name):
+        if not name or not str(name).strip():
+            raise ValueError("Account holder name cannot be empty.")
+        self.account_holder = str(name).strip()
+
+    def get_sort_code(self):
+        return self.sort_code
+
+    def set_sort_code(self, sc):
+        if not sc or not str(sc).strip():
+            raise ValueError("Sort code cannot be empty.")
+        self.sort_code = str(sc).strip()
 
     @property
     def balance(self):
@@ -94,14 +111,15 @@ class BankAccount:
 
     def PhoneNumber(self, phone_number):
         self.phone_number = phone_number
-        # Minimal validation: basic non-empty check. More validation can be added.
+        # Minimal validation: do not accept empty phone numbers
         if not phone_number or not str(phone_number).strip():
             print("Invalid phone number. Phone number not registered.")
             return
         self.phone_number = str(phone_number).strip()
 
 def bank():
-    account = BankAccount(f"{r.randint(10000000, 99999999)}", fk().name(), f"{r.randint(10, 99)}-{r.randint(10, 99)}-{r.randint(10, 99)}", r.randint(5, 9999))
+    account = BankAccount()
+    account = account.create_account()
     repeat = True
     # Menu loop
     while repeat:
@@ -118,9 +136,11 @@ def bank():
         choice = input("Choose an option: ")
         # Menu choice handling using match-case
         match choice:
+            # Create a new account
             case '1':
-
+                account = account.create_account()
                 input("Press Enter to continue...")
+            # Deposit money
             case '2':
                 try:
                     amount = float(input("Enter amount to deposit: £"))
@@ -134,6 +154,7 @@ def bank():
                 except ValueError as e:
                     print(f"Error: {e}")
                 input("Press Enter to continue...")
+            # Withdraw money
             case '3':
                 try:
                     amount = float(input("Enter amount to withdraw: £"))
@@ -147,13 +168,16 @@ def bank():
                 except ValueError as e:
                     print(f"Error: {e}")
                 input("Press Enter to continue...")
+            # Check balance
             case '4':
                 print(f"Current Balance: £{account.get_balance():.2f}")
                 input("Press Enter to continue...")
+            # Create a bank card
             case '5':
                 card = account.create_card()
                 print(f"Bank Card Created: {card}")
                 input("Press Enter to continue...")
+            # Register address and phone number
             case '6':
                 address = input("Enter your address: ")
                 account.RegisterAddress(address)
@@ -164,18 +188,22 @@ def bank():
                 if hasattr(account, 'phone_number') and account.phone_number:
                     print("Phone number registered.")
                 input("Press Enter to continue...")
+            # Display account info
             case '7':
                 account.display_account_info()
                 input("Press Enter to continue...")
+            # Exit
             case '8':
                 repeat = False
                 print("Exiting...")
                 return False
+            # Invalid option
             case _:
                 print("Invalid option. Please try again.")
                 input("Press Enter to continue...")
 
 def main():
+    ()
     # Error handling and restart mechanism
     repeat = True
     try:
@@ -187,7 +215,7 @@ def main():
         # implementation calls `main()` recursively which is okay for a small
         # number of restarts but could grow the call stack if abused. A looped
         # restart (while True:) would avoid recursion and is safer long-term.
-        if repeat == False:
+        if repeat == True:
             if input("Would you like to restart the program? (y/n): ").lower() == 'y':
                 main()
             else:
