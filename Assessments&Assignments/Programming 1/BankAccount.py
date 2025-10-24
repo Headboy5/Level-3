@@ -84,6 +84,10 @@ class BankAccount:
         print(f"Sort Code: {self.sort_code}")
         # Also show the current balance as part of account details
         print(f"Balance: £{self._balance:.2f}")
+        if hasattr(self, 'address') and self.address:
+            print(f"Address: {self.address}")
+        if hasattr(self, 'phone_number') and self.phone_number:
+            print(f"Phone Number: {self.phone_number}")
 
     # Create a bank card with random information
     def create_card(self):
@@ -107,15 +111,20 @@ class BankAccount:
         if not address or not str(address).strip():
             print("Invalid address. Address not registered.")
             return
-        self.address = str(address).strip()
+        else:
+            self.address = address
+            self.address = str(address).strip()
+            print("Address registered successfully.")
 
     def PhoneNumber(self, phone_number):
-        self.phone_number = phone_number
-        # Minimal validation: do not accept empty phone numbers
-        if not phone_number or not str(phone_number).strip():
+        # Minimal validation: do not accept empty phone numbers and ensure it's a number
+        if not phone_number or not str(phone_number).strip() or not str(phone_number).strip().isdigit():
             print("Invalid phone number. Phone number not registered.")
             return
-        self.phone_number = str(phone_number).strip()
+        else:
+            self.phone_number = phone_number
+            self.phone_number = str(phone_number).strip()
+            print("Phone number registered successfully.")
 
 def bank():
     account = BankAccount()
@@ -181,12 +190,8 @@ def bank():
             case '6':
                 address = input("Enter your address: ")
                 account.RegisterAddress(address)
-                if hasattr(account, 'address') and account.address:
-                    print("Address registered.")
                 phone_number = input("Enter your phone number: ")
                 account.PhoneNumber(phone_number)
-                if hasattr(account, 'phone_number') and account.phone_number:
-                    print("Phone number registered.")
                 input("Press Enter to continue...")
             # Display account info
             case '7':
