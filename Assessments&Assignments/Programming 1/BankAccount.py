@@ -1,13 +1,37 @@
 import random as r
 from faker import Faker as fk
 from faker.providers import credit_card
+
+
 class BankAccount:
     # Initialize the class
     def __init__(self, account_number, account_holder, sort_code, balance=0):
         self.account_number = account_number
         self.account_holder = account_holder
+        # _balance is treated as a "protected" attribute (leading underscore)
+        # — not enforced, but communicates callers should use get_balance()/deposit()/withdraw().
         self._balance = balance
         self.sort_code = sort_code
+        self.faker = fk()
+        self.faker.add_provider(credit_card)
+
+    def create_account(self):
+        # Allow the user to create an account by entering details
+        name = input("Enter account holder name (or leave blank for a random name): ").strip()
+        if not name:
+            name = self.faker.name()
+        sort_code = input("Enter sort code (or leave blank for auto-generated): ").strip()
+        if not sort_code:
+            sort_code = f"{r.randint(10, 99)}-{r.randint(10, 99)}-{r.randint(10, 99)}"
+        init_dep = input("Initial deposit amount (or leave blank for 0): ").strip()
+        try:
+            init_dep_val = float(init_dep) if init_dep else 0.0
+        except ValueError:
+            print("Invalid initial deposit - defaulting to 0.")
+            init_dep_val = 0.0
+        account = BankAccount(f"{r.randint(10000000, 99999999)}", name, sort_code, init_dep_val)
+        account.display_account_info()
+        return account
 
     # Deposit into balance from user entry
     def deposit(self, amount):
@@ -31,66 +55,100 @@ class BankAccount:
     def get_balance(self):
         return self._balance
 
+    @property
+    def balance(self):
+        """Read-only property for balance (getter). Use deposit()/withdraw() to change."""
+        return self._balance
+
     # Display account information
     def display_account_info(self):
         print(f"Account Number: {self.account_number}")
         print(f"Account Holder: {self.account_holder}")
         print(f"Sort Code: {self.sort_code}")
+        # Also show the current balance as part of account details
+        print(f"Balance: £{self._balance:.2f}")
 
     # Create a bank card with random information
     def create_card(self):
-        # Use a Faker instance (not the class) to access provider methods
-        fake = fk()
-        fake.add_provider(credit_card)
-        expiry = fake.credit_card_expire()
-        number = fake.credit_card_number()
+        expiry = self.faker.credit_card_expire()
+
+        # `credit_card_number()` generates a plausible card number string. In the
+        # earlier version of this file a manual random grouping was used; Faker
+        # provides the same and is easier to read.
+        number = self.faker.credit_card_number()
 
         BankCard = {
             "card_number": number,
             "expiry_date": expiry,
-            "cardholder_name": self.account_holder
+            "cvv": self.faker.credit_card_security_code()
         }
         return BankCard
     
     def RegisterAddress(self, address):
         self.address = address
+        # Minimal validation: do not accept empty addresses
+        if not address or not str(address).strip():
+            print("Invalid address. Address not registered.")
+            return
+        self.address = str(address).strip()
 
     def PhoneNumber(self, phone_number):
         self.phone_number = phone_number
+        # Minimal validation: basic non-empty check. More validation can be added.
+        if not phone_number or not str(phone_number).strip():
+            print("Invalid phone number. Phone number not registered.")
+            return
+        self.phone_number = str(phone_number).strip()
 
 def bank():
-    fake = fk()
-    fake.add_provider(credit_card)
-    account = BankAccount(f"{r.randint(10000000, 99999999)}", fake.name(), f"{r.randint(10, 99)}-{r.randint(10, 99)}-{r.randint(10, 99)}", r.randint(5, 9999))
-    exit = False
+    account = BankAccount(f"{r.randint(10000000, 99999999)}", fk().name(), f"{r.randint(10, 99)}-{r.randint(10, 99)}-{r.randint(10, 99)}", r.randint(5, 9999))
+    repeat = True
     # Menu loop
-    while not exit:
+    while repeat:
         print("\nMenu:")
-        print("1. Deposit")
-        print("2. Withdraw")
-        print("3. Check Balance")
-        print("4. Display Account Info")
+        print("1. Create Account")
+        print("2. Deposit")
+        print("3. Withdraw")
+        print("4. Check Balance")
         print("5. Create Bank Card")
-        print("6. Register Address")
-        print("7. Register Phone Number")
+        print("6. Register Address and Phone Number")
+        print("7. Display Account Info")
         print("8. Exit")
-        
+
         choice = input("Choose an option: ")
-        # Make this into the equivilant of a switch statement
+        # Menu choice handling using match-case
         match choice:
             case '1':
-                amount = float(input("Enter amount to deposit: £"))
-                account.deposit(amount)
+
                 input("Press Enter to continue...")
             case '2':
-                amount = float(input("Enter amount to withdraw: £"))
-                account.withdraw(amount)
+                try:
+                    amount = float(input("Enter amount to deposit: £"))
+                except ValueError:
+                    print("Invalid amount input. Deposit cancelled.")
+                    input("Press Enter to continue...")
+                    continue
+                try:
+                    account.deposit(amount)
+                    print(f"Deposited: £{amount:.2f}")
+                except ValueError as e:
+                    print(f"Error: {e}")
                 input("Press Enter to continue...")
             case '3':
-                print(f"Current Balance: £{account.get_balance():.2f}")
+                try:
+                    amount = float(input("Enter amount to withdraw: £"))
+                except ValueError:
+                    print("Invalid amount input. Withdrawal cancelled.")
+                    input("Press Enter to continue...")
+                    continue
+                try:
+                    account.withdraw(amount)
+                    print(f"Withdrew: £{amount:.2f}")
+                except ValueError as e:
+                    print(f"Error: {e}")
                 input("Press Enter to continue...")
             case '4':
-                account.display_account_info()
+                print(f"Current Balance: £{account.get_balance():.2f}")
                 input("Press Enter to continue...")
             case '5':
                 card = account.create_card()
@@ -99,34 +157,40 @@ def bank():
             case '6':
                 address = input("Enter your address: ")
                 account.RegisterAddress(address)
-                print("Address registered.")
-                input("Press Enter to continue...")
-            case '7':
+                if hasattr(account, 'address') and account.address:
+                    print("Address registered.")
                 phone_number = input("Enter your phone number: ")
                 account.PhoneNumber(phone_number)
-                print("Phone number registered.")
+                if hasattr(account, 'phone_number') and account.phone_number:
+                    print("Phone number registered.")
+                input("Press Enter to continue...")
+            case '7':
+                account.display_account_info()
                 input("Press Enter to continue...")
             case '8':
-                exit = True
+                repeat = False
                 print("Exiting...")
-                return True
+                return False
             case _:
                 print("Invalid option. Please try again.")
                 input("Press Enter to continue...")
 
 def main():
     # Error handling and restart mechanism
-    exit = False
+    repeat = True
     try:
-        exit = bank()
+        repeat = bank()
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
-        if exit == False:
+        # If the program did not exit cleanly we offer a restart. The current
+        # implementation calls `main()` recursively which is okay for a small
+        # number of restarts but could grow the call stack if abused. A looped
+        # restart (while True:) would avoid recursion and is safer long-term.
+        if repeat == False:
             if input("Would you like to restart the program? (y/n): ").lower() == 'y':
                 main()
             else:
                 print("Program terminated.")
-
 if __name__ == "__main__":
     main()
