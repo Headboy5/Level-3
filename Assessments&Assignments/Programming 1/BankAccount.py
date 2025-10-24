@@ -1,3 +1,6 @@
+import random as r
+from faker import Faker as fk
+from faker.providers import credit_card
 class BankAccount:
     # Initialize the class
     def __init__(self, account_number, account_holder, sort_code, balance=0):
@@ -6,7 +9,7 @@ class BankAccount:
         self._balance = balance
         self.sort_code = sort_code
 
-    # Deposit method
+    # Deposit into balance from user entry
     def deposit(self, amount):
         if amount > 0:
             self._balance += amount
@@ -14,7 +17,7 @@ class BankAccount:
         else:
             print("Deposit amount must be positive.")
 
-    # Withdraw method
+    # Withdraw from balance - no overdrafts
     def withdraw(self, amount):
         if amount > 0:
             if amount <= self._balance:
@@ -34,11 +37,17 @@ class BankAccount:
         print(f"Account Holder: {self.account_holder}")
         print(f"Sort Code: {self.sort_code}")
 
-    # Create a bank card
+    # Create a bank card with random information
     def create_card(self):
+        # Use a Faker instance (not the class) to access provider methods
+        fake = fk()
+        fake.add_provider(credit_card)
+        expiry = fake.credit_card_expire()
+        number = fake.credit_card_number()
+
         BankCard = {
-            "card_number": "1234 5678 9012 3456",
-            "expiry_date": "12/25",
+            "card_number": number,
+            "expiry_date": expiry,
             "cardholder_name": self.account_holder
         }
         return BankCard
@@ -50,7 +59,9 @@ class BankAccount:
         self.phone_number = phone_number
 
 def bank():
-    account = BankAccount("12345678", "John Doe", "12-34-56", 1000)
+    fake = fk()
+    fake.add_provider(credit_card)
+    account = BankAccount(f"{r.randint(10000000, 99999999)}", fake.name(), f"{r.randint(10, 99)}-{r.randint(10, 99)}-{r.randint(10, 99)}", r.randint(5, 9999))
     exit = False
     # Menu loop
     while not exit:
@@ -65,51 +76,43 @@ def bank():
         print("8. Exit")
         
         choice = input("Choose an option: ")
-        
-        # Deposit
-        if choice == '1':
-            amount = float(input("Enter amount to deposit: £"))
-            account.deposit(amount)
-            input("Press Enter to continue...")
-        # Withdraw
-        elif choice == '2':
-            amount = float(input("Enter amount to withdraw: £"))
-            account.withdraw(amount)
-            input("Press Enter to continue...")
-        # Check Balance
-        elif choice == '3':
-            print(f"Current Balance: £{account.get_balance():.2f}")
-            input("Press Enter to continue...")
-        # Display Account Info
-        elif choice == '4':
-            account.display_account_info()
-            input("Press Enter to continue...")
-        # Create Bank Card
-        elif choice == '5':
-            card = account.create_card()
-            print(f"Bank Card Created: {card}")
-            input("Press Enter to continue...")
-        # Register Address
-        elif choice == '6':
-            address = input("Enter your address: ")
-            account.RegisterAddress(address)
-            print("Address registered.")
-            input("Press Enter to continue...")
-        # Register Phone Number
-        elif choice == '7':
-            phone_number = input("Enter your phone number: ")
-            account.PhoneNumber(phone_number)
-            print("Phone number registered.")
-            input("Press Enter to continue...")
-        # Exit
-        elif choice == '8':
-            exit = True
-            print("Exiting...")
-            return True
-        # Invalid Option
-        else:
-            print("Invalid option. Please try again.")
-            input("Press Enter to continue...")
+        # Make this into the equivilant of a switch statement
+        match choice:
+            case '1':
+                amount = float(input("Enter amount to deposit: £"))
+                account.deposit(amount)
+                input("Press Enter to continue...")
+            case '2':
+                amount = float(input("Enter amount to withdraw: £"))
+                account.withdraw(amount)
+                input("Press Enter to continue...")
+            case '3':
+                print(f"Current Balance: £{account.get_balance():.2f}")
+                input("Press Enter to continue...")
+            case '4':
+                account.display_account_info()
+                input("Press Enter to continue...")
+            case '5':
+                card = account.create_card()
+                print(f"Bank Card Created: {card}")
+                input("Press Enter to continue...")
+            case '6':
+                address = input("Enter your address: ")
+                account.RegisterAddress(address)
+                print("Address registered.")
+                input("Press Enter to continue...")
+            case '7':
+                phone_number = input("Enter your phone number: ")
+                account.PhoneNumber(phone_number)
+                print("Phone number registered.")
+                input("Press Enter to continue...")
+            case '8':
+                exit = True
+                print("Exiting...")
+                return True
+            case _:
+                print("Invalid option. Please try again.")
+                input("Press Enter to continue...")
 
 def main():
     # Error handling and restart mechanism

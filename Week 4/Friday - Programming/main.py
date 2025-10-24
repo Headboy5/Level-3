@@ -37,8 +37,42 @@ STATE   STATE   OR OUTPUT   NOT OUTPUT
 -       -       -           +
 '''
 
+#==ACTIVITY 2==
+def testing_is():
+    data1=[10,20,30,40,50]
+    data2=[17,22,43,40,1]
+    data3=[10,20,30,40,50]
+
+    print(data1 is data2)  # false
+    print(data2 is data3)  # false
+
+def testing_bitwise():
+    k = 5  # In binary: 0101
+    m = 2  # In binary: 0010
+    print(f"k({k}) & m({m}): {k & m}")  # Bitwise AND
+    print(f"k({k}) | m({m}): {k | m}")  # Bitwise OR
+    print(f"k({k}) ^ m({m}): {k ^ m}")  # Bitwise XOR
+    print(f"~k({k}): {~k}")        # Bitwise NOT
+    print(f"k({k}) << 1: {k << 1}")  # Bitwise left shift
+    print(f"k({k}) >> 1: {k >> 1}")  # Bitwise right shift
+
+def testing_membership():
+    Y = 10; z= 20
+    mylist = [10, 2, 3, 4, 5 ]
+    if Y in mylist:
+        print("Y is in mylist")
+    else:
+        print("Y is not in mylist")
+    if z in mylist:
+        print("z is in mylist")
+    else:
+        print("z is not in mylist")
+
 def main():
     maths()
+    testing_is()
+    testing_bitwise()
+    testing_membership()
 
 if __name__ == "__main__":
     main()
