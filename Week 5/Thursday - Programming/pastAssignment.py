@@ -37,13 +37,14 @@ class Student:
     
     def getGrade(self, score):
         grades = {5: "A", 4: "B", 3: "C", 2: "D", 1: "E", 0: "F"}
-        try:
-            grade = grades[score]
-            print(f"{self.firstname} {self.lastname} with registration number {self.number} scored {grade}.")
-            return grade
-        except KeyError:
-            print("Invalid grade.")
-            return None
+        # Validate score range
+        if not isinstance(score, int) or score < 0 or score > 5:
+            # Raise an exception for invalid grade values as per spec
+            raise ValueError(f"Invalid grade value: {score}. Grade must be integer between 0 and 5.")
+
+        grade = grades[score]
+        print(f"{self.firstname} {self.lastname} with registration number {self.number} scored {grade}.")
+        return grade
 
 class Teacher:
     def __init__(self, firstname, lastname, salary, number):
@@ -52,8 +53,9 @@ class Teacher:
         self.salary = salary
         self.number = number
 
+    
     def getTeacherEmail(self):
-        return f"{self.firstname}.{self.lastname}@leedstrinity.ac.uk"
+        return f"{self.firstname}.{self.lastname}@stafftrinity.ac.uk"
 
     def getSalary(self):
         return self.salary
@@ -79,6 +81,11 @@ def school():
     teacher1 = Teacher("Jane", "Smith", 40000, "123456")
     testStudent(student1)
     testTeacher(teacher1)
+    if input("Test invalid grade? (y/n): ").lower() in ['y', 'yes']:
+        try:
+            student1.getGrade(6)  # Invalid grade to test exception
+        except ValueError as e:
+            print(e)
 
 def display_class_diagram():
     # Display a class diagram for Student and Teacher classes using Rich or plain text.
