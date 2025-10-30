@@ -121,3 +121,5 @@ if __name__ == "__main__":
 
     if input("Display class diagram? (y/n): ").lower() in ['y', 'yes']:
         display_class_diagram()
+
+        this is a test
