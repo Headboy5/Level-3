@@ -168,7 +168,6 @@ def bank():
                     continue
                 try:
                     account.deposit(amount)
-                    print(f"Deposited: £{amount:.2f}")
                 except ValueError as e:
                     print(f"Error: {e}")
                 input("Press Enter to continue...")
@@ -182,7 +181,6 @@ def bank():
                     continue
                 try:
                     account.withdraw(amount)
-                    print(f"Withdrew: £{amount:.2f}")
                 except ValueError as e:
                     print(f"Error: {e}")
                 input("Press Enter to continue...")
