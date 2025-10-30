@@ -16,7 +16,7 @@ class Student:
         self.grade = grade
 
     def getStudentEmail(self):
-        return f"{self.firstname}.{self.lastname}@leedstrinity.ac.uk"
+        return f"{self.number}@leedstrinity.ac.uk"
 
     def getFeesPaid(self):
         return self.feespaid
@@ -39,7 +39,7 @@ class Student:
         grades = {5: "A", 4: "B", 3: "C", 2: "D", 1: "E", 0: "F"}
         try:
             grade = grades[score]
-            print(f"The student with registration number {self.number} scored {grade}.")
+            print(f"{self.firstname} {self.lastname} with registration number {self.number} scored {grade}.")
             return grade
         except KeyError:
             print("Invalid grade.")
@@ -75,8 +75,8 @@ def testTeacher(teacher):
     print(f"Salary: £{teacher.getSalary():.2f}")
 
 def school():
-    student1 = Student("John", "Doe", "S12345", 2000, 5000, 4)
-    teacher1 = Teacher("Jane", "Smith", 40000, "T67890")
+    student1 = Student("John", "Doe", "2513273", 2000, 5000, 4)
+    teacher1 = Teacher("Jane", "Smith", 40000, "123456")
     testStudent(student1)
     testTeacher(teacher1)
 
