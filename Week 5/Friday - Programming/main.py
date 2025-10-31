@@ -90,7 +90,44 @@ def process_student_grades():
 # 1. Use an IDE or code editor with syntax highlighting and error detection.
 # 2. Regularly run your code to catch errors early.
 # 3. Review and test your code in small sections to ensure correctness.
-if __name__ == "__main__":
-    process_student_grades()
 
+def test_try_zero_division():
+    try:
+        10/0
+    except ZeroDivisionError as e:
+        print(f"ZeroDivisionError caught: {e}")
+        print("You cannot divide by zero in mathematics.\n")
+
+def try_value_error():
+    try:
+        int("abc")
+    except ValueError as e:
+        print(f"ValueError caught: {e}")
+        print("Cannot convert a non-numeric string to an integer.\n")
+
+def try_index_error():
+    lst = [1, 2, 3]
+    try:
+        print(lst[5])
+    except IndexError as e:
+        print(f"IndexError caught: {e}")
+        print("Tried to access an index that is out of range of the list.\n")
+
+def try_except_finally():
+    try:
+        x = 10/0
+    except ZeroDivisionError as e:
+        print(f"ZeroDivisionError caught: {e}")
+    finally:
+        print("This will always execute, regardless of whether an error occurred or not.")
+
+def main():
+    process_student_grades()
+    test_try_zero_division()
+    try_value_error()
+    try_index_error()
+    try_except_finally()
+
+if __name__ == "__main__":
+    main()
 
