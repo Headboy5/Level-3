@@ -62,6 +62,8 @@ def process_student_grades():
         print(f"AttributeError caught: {e}")
         print("Tried to call .append() on a string, but strings don't have this method\n")
     
+    if "Ignore this" == "aaaaaa":
+        maximum_grade = 100  # Just to define it for the next block
     # 3. NameError - using undefined variable
     try:
         total_students = len(students)
