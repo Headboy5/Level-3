@@ -18,19 +18,18 @@
 # os.mkdir(new_dir_path)  # overwrites if exists
 # print("Created New Directory:", new_dir_path)
 
-# import turtle
+import turtle
 
-# my_wn = turtle.Screen()
-# turtle.speed(2000000)
+my_wn = turtle.Screen()
+turtle.speed(2000000)
 
-# for i in range(30):
-#     turtle.circle(5*i)
-#     turtle.color("red")
-#     turtle.circle(-5*i)
-#     turtle.color("blue")
-#     turtle.left(i)
-# turtle.exitonclick()
-
+for i in range(30):
+    turtle.circle(5*i)
+    turtle.color("red")
+    turtle.circle(-5*i)
+    turtle.color("blue")
+    turtle.left(i)
+my_wn.exitonclick()
 
 # Make a quick research and list any three 3 python library.
 # 1. NumPy
