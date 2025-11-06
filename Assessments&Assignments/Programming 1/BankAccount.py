@@ -12,6 +12,7 @@ class BankAccount:
         # — not enforced, but communicates callers should use get_balance()/deposit()/withdraw().
         self._balance = balance
         self.sort_code = sort_code
+        self.bank_card = None  # Store the bank card when created
         self.faker = fk()
         self.faker.add_provider(credit_card)
 
@@ -95,9 +96,17 @@ class BankAccount:
             print(f"Address: {self.address}")
         if hasattr(self, "phone_number") and self.phone_number:
             print(f"Phone Number: {self.phone_number}")
+        if self.bank_card:
+            print(f"Bank Card: {self.bank_card['card_number']} (Expires: {self.bank_card['expiry_date']})")
 
     # Create a bank card with random information
     def create_card(self):
+        # Check if a card already exists
+        if self.bank_card is not None:
+            print("A bank card already exists for this account.")
+            print(f"Existing card: {self.bank_card['card_number']} (Expires: {self.bank_card['expiry_date']})")
+            return self.bank_card
+        
         expiry = self.faker.credit_card_expire()
 
         # `credit_card_number()` generates a plausible card number string. In the
@@ -110,10 +119,12 @@ class BankAccount:
             "expiry_date": expiry,
             "cvv": self.faker.credit_card_security_code()
         }
+        # Store the card in the instance
+        self.bank_card = BankCard
+        print("Bank card created successfully!")
         return BankCard
     
     def RegisterAddress(self, address):
-        self.address = address
         # Minimal validation: do not accept empty addresses
         if not address or not str(address).strip():
             print("Invalid address. Address not registered.")
@@ -215,21 +226,26 @@ def bank():
                 input("Press Enter to continue...")
 
 def main():
-    # Error handling and restart mechanism
-    repeat = True
-    try:
-        repeat = bank()
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    finally:
-        # If the program did not exit cleanly we offer a restart. The current
-        # implementation calls `main()` recursively which is okay for a small
-        # number of restarts but could grow the call stack if abused. A looped
-        # restart (while True:) would avoid recursion and is safer long-term.
-        if repeat == True:
-            if input("Would you like to restart the program? (y/n): ").lower() == "y":
-                main()
+    # Error handling and restart mechanism using a loop instead of recursion
+    # This prevents potential stack overflow from repeated restarts
+    while True:
+        repeat = True
+        try:
+            repeat = bank()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        finally:
+            # If the program did not exit cleanly we offer a restart
+            if repeat == True:
+                if input("Would you like to restart the program? (y/n): ").lower() == "y":
+                    continue  # Loop back to restart
+                else:
+                    print("Program terminated.")
+                    break
             else:
-                print("Program terminated.")
+                # User selected exit from menu, break the loop
+                break
+
+
 if __name__ == "__main__":
     main()
