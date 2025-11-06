@@ -1,50 +1,64 @@
-def solve_crossmath():
-    solutions = []
+# Research the OS library and pick three functions and do the following:
 
-    for a in range(1, 10):
-        for b in range(1, 10):
-            if b == a:
-                continue
-            for c in range(1, 10):
-                if c in (a, b):
-                    continue
-                for d in range(1, 10):
-                    if d in (a, b, c):
-                        continue
-                    for e in range(1, 10):
-                        if e in (a, b, c, d):
-                            continue
-                        for f in range(1, 10):
-                            if f in (a, b, c, d, e):
-                                continue
-                            for g in range(1, 10):
-                                if g in (a, b, c, d, e, f):
-                                    continue
-                                for h in range(1, 10):
-                                    if h in (a, b, c, d, e, f, g):
-                                        continue
-                                    for i in range(1, 10):
-                                        if i in (a, b, c, d, e, f, g, h):
-                                            continue
-                                        # compute expression using floats
-                                        expr = a + 13 * b / c + d + 12 * e - f - 11 + g * h / i - 10
-                                        if abs(expr - 66) < 1e-12:
-                                            solutions.append((a, b, c, d, e, f, g, h, i))
+# I) Briefly define the three functions.
+# II) Give examples of how to use/apply them in your python development.
+# 1. os.getcwd()
+# Definition: This function returns the current working directory of a process.
+# import os
 
-    if solutions:
-        print(f"Found {len(solutions)} solution(s):")
-        for sol in solutions:
-            a, b, c, d, e, f, g, h, i = sol
-            print(f"a={a}, b={b}, c={c}, d={d}, e={e}, f={f}, g={g}, h={h}, i={i}")
-    else:
-        print("No solution found.")
+# current_directory = os.getcwd()
+# print("Current Directory:", current_directory)
+# # 2. os.listdir()
+# # Definition: This function returns a list of the names of the entries in the directory given by path.
+# files_and_dirs = os.listdir(current_directory)
+# print("Files and Directories:", files_and_dirs)
+# # 3. os.mkdir()
+# # Definition: This function creates a new directory at the specified path.
+# new_dir_path = os.path.join(current_directory, "new_directory")
+# os.mkdir(new_dir_path)  # overwrites if exists
+# print("Created New Directory:", new_dir_path)
 
-    return solutions
+# import turtle
 
-def main():
-    # Run the solver and exit. solve_crossmath prints the result.
-    solve_crossmath()
+# my_wn = turtle.Screen()
+# turtle.speed(2000000)
+
+# for i in range(30):
+#     turtle.circle(5*i)
+#     turtle.color("red")
+#     turtle.circle(-5*i)
+#     turtle.color("blue")
+#     turtle.left(i)
+# turtle.exitonclick()
 
 
-if __name__ == "__main__":
-    main()
+# Make a quick research and list any three 3 python library.
+# 1. NumPy
+# 2. Pandas
+# 3. Matplotlib
+
+# What is the python syntax for importing a library in your development area.
+# import library_name
+
+# Look into the turtle library pick three functions of your choice and give example of each.
+# 1. turtle.forward(distance)
+# Example:
+# turtle.forward(100)  # Moves the turtle forward by 100 units
+# 2. turtle.right(angle)
+# Example:
+# turtle.right(90)  # Turns the turtle right by 90 degrees
+# 3. turtle.circle(radius)
+# Example:
+# turtle.circle(50)  # Draws a circle with a radius of 50 units
+
+# Choose two built-in functions, explain their syntax and give an example of each.
+# 1. len()
+# Syntax: len(s)
+# Example:
+# my_string = "Hello, World!"
+# print(len(my_string))  # Output: 13
+# 2. type()
+# Syntax: type(object)
+# Example:
+# my_number = 42
+# print(type(my_number))  # Output: <class 'int'>
