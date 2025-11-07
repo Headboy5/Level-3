@@ -195,4 +195,122 @@ Notes:
 
 ---
 
+## Part 2
+
+### 2.1 Standardised diagram symbols — notes
+
+Below are concise notes on common, standard symbols used in four UML-style diagram types. These are written as quick reference notes you can use when creating diagrams.
+
+- Class diagrams
+  - Class: rectangle divided into sections (Name / Attributes / Operations).
+  - Visibility: + public, - private, # protected.
+  - Association: solid line between classes; multiplicity labels (1, 0..*, etc.) near ends.
+  - Inheritance (generalization): solid line with hollow triangle arrow pointing to parent.
+  - Aggregation: open (hollow) diamond at the whole end (weak ownership).
+  - Composition: filled diamond at the whole end (strong ownership, lifecycle bound).
+  - Dependency: dashed arrow showing one class depends on another.
+
+- State machine diagrams (statecharts)
+  - State: rounded rectangle showing a condition or mode.
+  - Initial state: filled black circle.
+  - Final state: circle with a dot inside (bullseye) or a filled circle with surrounding circle.
+  - Transition: arrow from one state to another, optionally labeled with event [guard] / action.
+  - Entry / Exit actions: prefixed with entry/ or exit/ inside state.
+  - Composite states: states containing nested substates.
+
+- Use case diagrams
+  - Actor: stick figure (or an actor icon) representing an external role.
+  - Use case: oval representing a goal/interaction the actor has with the system.
+  - System boundary: rectangle that groups use cases (system box).
+  - Associations: simple lines between actors and use cases.
+  - Include / Extend relationships: dashed arrows labeled «include» or «extend».
+
+- Sequence diagrams
+  - Lifeline: vertical dashed line under an object/actor name.
+  - Activation (execution) bar: narrow rectangle on the lifeline when the object is active.
+  - Synchronous message: solid arrow head between lifelines (call).
+  - Asynchronous message: open arrow head.
+  - Return message: dashed arrow back to caller (often labeled with return value).
+  - Combined fragments: boxes for alt/opt/loop (control structures in interactions).
+
+### 2.2 Class diagram — Library system (Book / Member / Loan)
+
+Pseudocode-level class summary:
+- Book(title, author, ISBN)
+- Member(name, membershipID)
+- Loan(loanDate, returnDate)
+
+Mermaid class diagram (simplified):
+
+```mermaid
+classDiagram
+  class Book {
+    +String title
+    +String author
+    +String ISBN
+  }
+
+  class Member {
+    +String name
+    +String membershipID
+  }
+
+  class Loan {
+    +Date loanDate
+    +Date returnDate
+  }
+
+  %% associations: a Member can have many Loans; each Loan is for one Book
+  Member "1" --> "*" Loan : has
+  Book "1" <-- "*" Loan : isFor
+```
+
+Notes: the diagram shows that a Member may have many Loan records and each Loan links to a single Book. You can extend classes with methods (borrow(), returnBook(), isOverdue()) as needed.
+
+### 2.3 State Machine Diagram — Library loan lifecycle
+
+We'll model the lifecycle of a single Book copy / Loan record. States: Available, On Loan, Overdue, Returned.
+
+```mermaid
+stateDiagram-v2
+  [*] --> Available
+  Available --> OnLoan : borrow / create Loan
+  OnLoan --> Returned : return / close Loan
+  OnLoan --> Overdue : dueDatePassed
+  Overdue --> Returned : return / close Loan
+  Returned --> Available : processReturn
+```
+
+Notes: transitions are labeled with event / action. Initial and final states are shown; composite states or entry/exit actions can be added for more detail.
+
+### 2.4 Sequence Diagram — Programming assessment workflow
+
+This sequence diagram models a typical automated assessment flow: student submits code, the system compiles and runs tests, then returns feedback/grade.
+
+```mermaid
+sequenceDiagram
+  participant Student
+  participant AssessmentSystem
+  participant Compiler
+  participant TestRunner
+  participant Grader
+
+  Student->>AssessmentSystem: Submit source code
+  AssessmentSystem->>Compiler: Compile(source)
+  Compiler-->>AssessmentSystem: compilation result (success/errors)
+  alt compilation success
+    AssessmentSystem->>TestRunner: Run tests on compiled binary
+    TestRunner-->>AssessmentSystem: test results
+    AssessmentSystem->>Grader: Calculate grade (test results)
+    Grader-->>AssessmentSystem: grade and feedback
+    AssessmentSystem-->>Student: Return grade and feedback
+  else compilation failed
+    AssessmentSystem-->>Student: Return compilation errors
+  end
+```
+
+Notes: You can expand the diagram with more participants (plagiarism checker, style linter, CI) or include loops for repeated test runs.
+
+---
+
 End of activities.
