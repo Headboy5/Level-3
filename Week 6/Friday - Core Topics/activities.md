@@ -199,8 +199,6 @@ Notes:
 
 ### 2.1 Standardised diagram symbols — notes
 
-Below are concise notes on common, standard symbols used in four UML-style diagram types. These are written as quick reference notes you can use when creating diagrams.
-
 - Class diagrams
   - Class: rectangle divided into sections (Name / Attributes / Operations).
   - Visibility: + public, - private, # protected.
@@ -240,7 +238,7 @@ Pseudocode-level class summary:
 - Member(name, membershipID)
 - Loan(loanDate, returnDate)
 
-Mermaid class diagram (simplified):
+Mermaid class diagram:
 
 ```mermaid
 classDiagram
@@ -265,11 +263,7 @@ classDiagram
   Book "1" <-- "*" Loan : isFor
 ```
 
-Notes: the diagram shows that a Member may have many Loan records and each Loan links to a single Book. You can extend classes with methods (borrow(), returnBook(), isOverdue()) as needed.
-
 ### 2.3 State Machine Diagram — Library loan lifecycle
-
-We'll model the lifecycle of a single Book copy / Loan record. States: Available, On Loan, Overdue, Returned.
 
 ```mermaid
 stateDiagram-v2
@@ -281,11 +275,7 @@ stateDiagram-v2
   Returned --> Available : processReturn
 ```
 
-Notes: transitions are labeled with event / action. Initial and final states are shown; composite states or entry/exit actions can be added for more detail.
-
 ### 2.4 Sequence Diagram — Programming assessment workflow
-
-This sequence diagram models a typical automated assessment flow: student submits code, the system compiles and runs tests, then returns feedback/grade.
 
 ```mermaid
 sequenceDiagram
@@ -308,9 +298,3 @@ sequenceDiagram
     AssessmentSystem-->>Student: Return compilation errors
   end
 ```
-
-Notes: You can expand the diagram with more participants (plagiarism checker, style linter, CI) or include loops for repeated test runs.
-
----
-
-End of activities.
