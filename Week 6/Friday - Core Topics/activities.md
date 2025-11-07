@@ -176,7 +176,7 @@ END
 ```mermaid
 graph TD;
   Start([Start]) --> TotInit["TotalBonus = 0"]
-  TotInit --> LoopStart[/Input Employee Name (blank to stop)/]
+  TotInit --> LoopStart[/Input Employee Name - blank to stop/]
   LoopStart --> CheckName{"EmployeeName IS EMPTY?"}
   CheckName -- Yes --> ShowTotal["Output TotalBonus"] --> End([End])
   CheckName -- No --> InID[/Input Employee ID/] --> InTargets[/Input Targets Met/]
