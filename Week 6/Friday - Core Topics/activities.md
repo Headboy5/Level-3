@@ -233,13 +233,6 @@ Notes:
 
 ### 2.2 Class diagram — Library system (Book / Member / Loan)
 
-Pseudocode-level class summary:
-- Book(title, author, ISBN)
-- Member(name, membershipID)
-- Loan(loanDate, returnDate)
-
-Mermaid class diagram:
-
 ```mermaid
 classDiagram
   class Book {
