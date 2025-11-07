@@ -82,3 +82,64 @@ graph TD
   Exit --> End([End])
 ```
 
+---
+
+### Sequence diagram — Program interaction examples
+
+This sequence diagram shows typical interactions between a user, the program, and domain objects when creating an account, depositing, withdrawing, creating a card and displaying account info.
+
+```mermaid
+sequenceDiagram
+  participant User
+  participant Program
+  participant BankAccount
+  participant BankCard
+
+  %% Create account flow
+  User->>Program: Select "Create or Replace Account"
+  Program->>User: Prompt for name, sort code, initial deposit
+  User-->>Program: Provide name, sort code, initial deposit
+  Program->>BankAccount: createAccount(name, sortCode, initialDeposit)
+  BankAccount-->>Program: accountCreated(accountNumber)
+  Program-->>User: Show account created confirmation
+
+  %% Deposit flow
+  User->>Program: Select "Deposit Money"
+  Program->>User: Prompt for deposit amount
+  User-->>Program: Provide amount
+  Program->>BankAccount: deposit(amount)
+  alt amount valid
+    BankAccount-->>Program: newBalance
+    Program-->>User: Show success and newBalance
+  else invalid amount
+    BankAccount-->>Program: error
+    Program-->>User: Show error message
+  end
+
+  %% Withdraw flow
+  User->>Program: Select "Withdraw Money"
+  Program->>User: Prompt for withdrawal amount
+  User-->>Program: Provide amount
+  Program->>BankAccount: withdraw(amount)
+  alt sufficient balance
+    BankAccount-->>Program: newBalance
+    Program-->>User: Show success and newBalance
+  else insufficient funds
+    BankAccount-->>Program: error (insufficient funds)
+    Program-->>User: Show insufficient funds message
+  end
+
+  %% Create card flow
+  User->>Program: Select "Create Bank Card"
+  Program->>BankCard: createCardFor(accountNumber)
+  BankCard-->>Program: cardCreated(maskedNumber)
+  Program-->>User: Show card created confirmation (masked number)
+
+  %% Display info flow
+  User->>Program: Select "Display Account Info"
+  Program->>BankAccount: getAccountInfo()
+  BankAccount-->>Program: accountInfo (balance, card, contact)
+  Program-->>User: Display account info
+
+```
+
