@@ -75,9 +75,9 @@ def test_datetime():
     print(f"You were born on a {birthday.strftime('%A')}.")
 
     # When will you be 1 year older? Hint(timedelta)
-    from datetime import timedelta
+    from dateutil.relativedelta import relativedelta
     now = datetime.now()
-    one_year_later = now + timedelta(days=365)
+    one_year_later = now + relativedelta(years=1)
     print(f"You will be 1 year older on {one_year_later}.")
 
 def main():
