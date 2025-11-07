@@ -33,9 +33,7 @@ class Program {
   + display_info()
   + exit()
 }
-<!-- 
-Program --> BankAccount : manages
-BankAccount --> BankCard : issues -->
+
 ```
 
 ```mermaid
