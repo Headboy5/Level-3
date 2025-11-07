@@ -47,15 +47,43 @@ def test_regex():
     for match in compiled_matches:
         print(f"Found compiled match: {match.group()} at position {match.start()}")
     # Using re.fullmatch()
-    full_match = re.fullmatch(r'Hello, welcome to the world of Python programming.', text)
+    full_match = re.fullmatch(fr'Hello, and welcome to the world of Python programming. My name is Gustavo, but you can call me Gus.', text)
     if full_match:
         print("The entire string matches the pattern.")
+    else:
+        print("The entire string does not match the pattern.")
 
+def test_datetime():
+    from datetime import datetime
 
+    now = datetime.now()
+    print(now)
+
+    # 2024-02-03 15:17:17.979151
+
+    # Try and run this:
+    print(f"Year: {now.year}")
+    print(f"Month: {now.month}")
+    print(f"Day: {now.day}")
+    print(f"Hour: {now.hour}")
+    print(f"Minute: {now.minute}")
+    print(f"Second: {now.second}")
+    # Create a date object for your birthday.
+    birthday = datetime(2007, 3, 20)  # Replace with your actual birth date
+
+    # What day of the week was your day of birth?
+    print(f"You were born on a {birthday.strftime('%A')}.")
+
+    # When will you be 1 year older? Hint(timedelta)
+    from datetime import timedelta
+    now = datetime.now()
+    one_year_later = now + timedelta(days=365)
+    print(f"You will be 1 year older on {one_year_later}.")
 
 def main():
     test_random()
     test_regex()
+    test_datetime()
 
 if __name__ == "__main__":
     main()
