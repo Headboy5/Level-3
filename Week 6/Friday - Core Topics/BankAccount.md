@@ -1,6 +1,6 @@
 # BankAccount — Diagrams and program flow
 
-This file contains diagrams for a simple bank account program: a class diagram showing main entities and a flowchart describing the program menu and feature flows. The sequence diagram below (recently added) remains unchanged.
+This file contains diagrams for a simple bank account program: a class diagram showing main entities and a flowchart describing the program menu and feature flows.
 
 ## Class diagram (program-focused)
 
