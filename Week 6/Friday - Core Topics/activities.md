@@ -267,27 +267,3 @@ stateDiagram-v2
   Overdue --> Returned : return / close Loan
   Returned --> Available : processReturn
 ```
-
-### 2.4 Sequence Diagram — Programming assessment workflow
-
-```mermaid
-sequenceDiagram
-  participant Student
-  participant AssessmentSystem
-  participant Compiler
-  participant TestRunner
-  participant Grader
-
-  Student->>AssessmentSystem: Submit source code
-  AssessmentSystem->>Compiler: Compile(source)
-  Compiler-->>AssessmentSystem: compilation result (success/errors)
-  alt compilation success
-    AssessmentSystem->>TestRunner: Run tests on compiled binary
-    TestRunner-->>AssessmentSystem: test results
-    AssessmentSystem->>Grader: Calculate grade (test results)
-    Grader-->>AssessmentSystem: grade and feedback
-    AssessmentSystem-->>Student: Return grade and feedback
-  else compilation failed
-    AssessmentSystem-->>Student: Return compilation errors
-  end
-```
