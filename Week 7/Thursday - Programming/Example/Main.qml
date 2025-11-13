@@ -27,7 +27,7 @@ Window {
         Button {
             text: "Click me"
             Layout.alignment: Qt.AlignHCenter
-            onClicked:  setText()
+            // onClicked:  setText()
         }
     }
 }
