@@ -1,33 +1,7 @@
-import customtkinter
+import PySide6.QtCore
 
-class MyCheckboxFrame(customtkinter.CTkFrame):
-    def __init__(self, master):
-        super().__init__(master)
+# Prints PySide6 version
+print(PySide6.__version__)
 
-        self.checkbox_1 = customtkinter.CTkCheckBox(self, text="Checkbox 1")
-        self.checkbox_1.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="w")
-        self.checkbox_2 = customtkinter.CTkCheckBox(self, text="Checkbox 2")
-        self.checkbox_2.grid(row=1, column=0, padx=10, pady=(10, 0), sticky="w")
-        self.checkbox_3 = customtkinter.CTkCheckBox(self, text="Checkbox 3")
-        self.checkbox_3.grid(row=2, column=0, padx=10, pady=(10, 0), sticky="w")
-
-class App(customtkinter.CTk):
-    def __init__(self):
-        super().__init__()
-
-        self.title("My App")
-        self.geometry("400x180")
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=1)
-
-        self.checkbox_frame = MyCheckboxFrame(self)
-        self.checkbox_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="nsw")
-
-        self.button = customtkinter.CTkButton(self, text="My Button", command=self.button_callback)
-        self.button.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
-
-    def button_callback(self):
-        print("Button Pressed")
-
-app = App()
-app.mainloop()
+# Prints the Qt version used to compile PySide6
+print(PySide6.QtCore.__version__)
