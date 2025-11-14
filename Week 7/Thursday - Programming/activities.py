@@ -12,15 +12,15 @@ class NameAndNumber(QtWidgets.QWidget):
         self.number_label = QtWidgets.QLabel("Number")
         self.number_label.setStyleSheet("background-color: #2b2b2b; color: #e0e0e0; font-size: 18px; padding: 10px; border-radius: 6px;")
         
-        # Create line edits for displaying values
+        # Create line edits for displaying values (use placeholder text so it disappears on focus)
         self.name_input = QtWidgets.QLineEdit()
-        self.name_input.setText("Your Name Here")
+        self.name_input.setPlaceholderText("Your Name Here")
         self.name_input.setStyleSheet("background-color: #3c3c3c; color: #ffffff; font-size: 16px; padding: 10px; border: 1px solid #555555; border-radius: 6px;")
-        
+
         self.number_input = QtWidgets.QLineEdit()
-        self.number_input.setText("Your Number Here")
+        self.number_input.setPlaceholderText("Your Number Here")
         self.number_input.setStyleSheet("background-color: #3c3c3c; color: #ffffff; font-size: 16px; padding: 10px; border: 1px solid #555555; border-radius: 6px;")
-        
+
         # Create grid layout
         layout = QtWidgets.QGridLayout(self)
         layout.addWidget(self.name_label, 0, 0)
