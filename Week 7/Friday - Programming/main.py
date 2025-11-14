@@ -105,7 +105,6 @@ class LoginForm(QtWidgets.QWidget):
         layout.addWidget(login_button)
         layout.addWidget(no_account_button)
 
-        # Window-level dark background and default text colour
         self.setStyleSheet("QWidget { background-color: #0b0f12; color: #e6eef6; }")
 
 
@@ -117,7 +116,6 @@ def TestLoginForm():
 
 
 def main():
-    # Keep simple console chooser so running from terminal is easy.
     choice = input(
         "Which program would you like to run? (Choose 1 for pack_attributes, 2 for login_form): "
     )
