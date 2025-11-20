@@ -1,6 +1,4 @@
 import sys
-import webbrowser
-
 from PySide6.QtWidgets import (
     QApplication,
     QWidget,
@@ -9,10 +7,10 @@ from PySide6.QtWidgets import (
     QLabel,
     QLineEdit,
     QPushButton,
-    QTextBrowser,
     QMessageBox,
 )
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QFont
 
 try:
     import phonenumbers
@@ -27,12 +25,12 @@ except Exception as e:
 class PhoneLookupApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Phone Number Lookup — Prototype")
+        self.setWindowTitle("NHS Track and Trace - Phone Number Lookup")
         self.resize(560, 420)
 
         main = QVBoxLayout(self)
 
-        # Input row
+        # INPUT ROW
         row = QHBoxLayout()
         self.input = QLineEdit()
         self.input.setPlaceholderText("Enter phone number (e.g. +447700900123 or 07700900123)")
@@ -45,29 +43,68 @@ class PhoneLookupApp(QWidget):
 
         main.addLayout(row)
 
-        # Quick action row
-        action_row = QHBoxLayout()
-        self.open_map_btn = QPushButton("Open location in web maps")
-        self.open_map_btn.clicked.connect(self.open_maps)
-        self.open_map_btn.setEnabled(False)
-        action_row.addWidget(self.open_map_btn)
+        # OUTPUT AREA
+        output_font = QFont()
+        output_font.setPointSize(10)
 
-        self.copy_btn = QPushButton("Copy result")
-        self.copy_btn.clicked.connect(self.copy_result)
-        self.copy_btn.setEnabled(False)
-        action_row.addWidget(self.copy_btn)
+        self.location_label = QLabel("Location:")
+        self.location_label.setFont(output_font)
+        main.addWidget(self.location_label)
 
-        main.addLayout(action_row)
+        self.country_label = QLabel("Country code:")
+        self.country_label.setFont(output_font)
+        main.addWidget(self.country_label)
 
-        # Output area
-        self.out = QTextBrowser()
-        self.out.setOpenExternalLinks(True)
-        main.addWidget(self.out)
+        self.timezone_label = QLabel("Time zone:")
+        self.timezone_label.setFont(output_font)
+        main.addWidget(self.timezone_label)
 
-        # Footer
-        footer = QLabel("Backend: phonenumbers (if installed) — UI prototype only")
-        footer.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        main.addWidget(footer)
+        self.carrier_label = QLabel("Carrier:")
+        self.carrier_label.setFont(output_font)
+        main.addWidget(self.carrier_label)
+
+        self.valid_label = QLabel("Valid Number:")
+        self.valid_label.setFont(output_font)
+        main.addWidget(self.valid_label)
+
+        main.addStretch()
+
+        # DARK MODE STYLING
+        self.setStyleSheet("""
+            QWidget {
+                background-color: #0b0f12;
+                color: #e6eef6;
+                font-family: Segoe UI, Arial, sans-serif;
+            }
+            QLineEdit {
+                background-color: #0f1417;
+                color: #e6eef6;
+                padding: 8px;
+                border: 1px solid rgba(255,255,255,0.04);
+                border-radius: 6px;
+            }
+            QLineEdit:focus {
+                border: 1px solid #2a9df4;
+            }
+            QPushButton {
+                background-color: #15202b;
+                color: #e6eef6;
+                font-size: 15px;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.03);
+            }
+            QPushButton:hover {
+                background-color: #1b2a36;
+            }
+            QPushButton:pressed {
+                background-color: #12202a;
+            }
+            QLabel {
+                color: #e6eef6;
+                padding: 4px;
+            }
+        """)
 
         if phonenumbers is None:
             QMessageBox.warning(
@@ -76,73 +113,47 @@ class PhoneLookupApp(QWidget):
                 "The `phonenumbers` package is not available.\nInstall with: pip install phonenumbers",
             )
 
-        self._last_location_text = None
-
     def on_lookup(self):
         text = self.input.text().strip()
         if not text:
             return
 
         if phonenumbers is None:
-            self.out.setPlainText("ERROR: phonenumbers module is not installed. Run `pip install phonenumbers`.")
+            QMessageBox.critical(self, "Error", "phonenumbers module is not installed.\nRun: pip install phonenumbers")
             return
 
-        # Try to parse. Let phonenumbers infer region if a leading + not provided.
+        # TRY TO PARSE - DEFAULT TO GB (UK) FOR NUMBERS WITHOUT COUNTRY CODE
         try:
-            # If user provides no plus and no region we still attempt parse with None; it may raise.
-            num = phonenumbers.parse(text, None)
-        except NumberParseException as exc:
-            self.out.setPlainText(f"Parse error: {exc}")
-            self.open_map_btn.setEnabled(False)
-            self.copy_btn.setEnabled(False)
-            return
+            # FIRST TRY WITH GB REGION (FOR UK NUMBERS LIKE 07xxx)
+            num = phonenumbers.parse(text, "GB")
+        except NumberParseException:
+            try:
+                # IF THAT FAILS, TRY WITH NO REGION (FOR INTERNATIONAL NUMBERS WITH +)
+                num = phonenumbers.parse(text, None)
+            except NumberParseException as exc:
+                QMessageBox.warning(self, "Parse Error", f"Could not parse number:\n{exc}")
+                self.location_label.setText("Location:")
+                self.country_label.setText("Country code:")
+                self.timezone_label.setText("Time zone:")
+                self.carrier_label.setText("Carrier:")
+                self.valid_label.setText("Valid Number:")
+                return
 
-        # Gather information
+        # GATHER INFORMATION
         is_valid = phonenumbers.is_valid_number(num)
-        e164 = phonenumbers.format_number(num, phonenumbers.PhoneNumberFormat.E164)
-        intl = phonenumbers.format_number(num, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
-        national = phonenumbers.format_number(num, phonenumbers.PhoneNumberFormat.NATIONAL)
-        country_code = num.country_code
+        country_code = f"+{num.country_code}"
         region = phonenumbers.region_code_for_number(num)
-        carrier_name = carrier.name_for_number(num, "en") or "(unknown)"
-        location = geocoder.description_for_number(num, "en") or "(unknown)"
+        carrier_name = carrier.name_for_number(num, "en") or "Unknown"
+        location = geocoder.description_for_number(num, "en") or "Unknown"
         tzs = timezone.time_zones_for_number(num) or []
+        tz_str = ", ".join(tzs) if tzs else "Unknown"
 
-        # Build result text
-        lines = []
-        lines.append(f"Input: {text}")
-        lines.append(f"E.164: {e164}")
-        lines.append(f"International: {intl}")
-        lines.append(f"National: {national}")
-        lines.append(f"Valid number: {is_valid}")
-        lines.append(f"Country code: +{country_code}")
-        lines.append(f"Region code: {region}")
-        lines.append(f"Carrier: {carrier_name}")
-        lines.append(f"Geocoded location: {location}")
-        lines.append(f"Timezones: {', '.join(tzs) if tzs else '(unknown)'}")
-
-        # Link to a simple Google Maps search for the geocoded location string (if available)
-        if location and location != "(unknown)":
-            maps_url = f"https://www.google.com/maps/search/{location.replace(' ', '+')}"
-            lines.append(f"Map search: <a href=\"{maps_url}\">Open maps</a>")
-            self._last_location_text = location
-            self.open_map_btn.setEnabled(True)
-        else:
-            self._last_location_text = None
-            self.open_map_btn.setEnabled(False)
-
-        out_text = "\n".join(lines)
-        self.out.setHtml(out_text.replace('\n', '<br/>'))
-        self.copy_btn.setEnabled(True)
-
-    def open_maps(self):
-        if not self._last_location_text:
-            return
-        url = f"https://www.google.com/maps/search/{self._last_location_text.replace(' ', '+')}"
-        webbrowser.open(url)
-
-    def copy_result(self):
-        QApplication.clipboard().setText(self.out.toPlainText())
+        # UPDATE LABELS
+        self.location_label.setText(f"Location: {location}")
+        self.country_label.setText(f"Country code: {country_code} ({region})")
+        self.timezone_label.setText(f"Time zone: {tz_str}")
+        self.carrier_label.setText(f"Carrier: {carrier_name}")
+        self.valid_label.setText(f"Valid Number: {'Yes' if is_valid else 'No'}")
 
 
 def main():
