@@ -14,12 +14,14 @@ class UsernameAndAddress(QtWidgets.QWidget):
         # Username label and entry
         self.username_label = QLabel("Username:")
         self.username_entry = QLineEdit()
+        self.username_entry.setPlaceholderText("Enter your username here")
         layout.addWidget(self.username_label)
         layout.addWidget(self.username_entry)
 
         # Address label and entry
         self.address_label = QLabel("Address:")
         self.address_entry = QLineEdit()
+        self.address_entry.setPlaceholderText("Enter your address here")
         layout.addWidget(self.address_label)
         layout.addWidget(self.address_entry)
 
@@ -47,12 +49,14 @@ class UsernameAndPassword(QtWidgets.QWidget):
         # Username label and entry
         self.username_label = QLabel("Username:")
         self.username_entry = QLineEdit()
+        self.username_entry.setPlaceholderText("Enter your username here")
         layout.addWidget(self.username_label)
         layout.addWidget(self.username_entry)
 
         # Password label and entry
         self.password_label = QLabel("Password:")
         self.password_entry = QLineEdit()
+        self.password_entry.setPlaceholderText("Enter your password here")
         self.password_entry.setEchoMode(QLineEdit.Password)
         layout.addWidget(self.password_label)
         layout.addWidget(self.password_entry)
