@@ -2,7 +2,6 @@ from PySide6 import QtCore, QtWidgets, QtGui
 from PySide6.QtSvg import QSvgRenderer
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QVBoxLayout, QWidget, QPushButton
-from soupsieve import match
 class UsernameAndAddress(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
