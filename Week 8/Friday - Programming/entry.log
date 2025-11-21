@@ -1,0 +1,50 @@
+2025-11-21 14:26:33 - DEBUG - This is a debug message
+2025-11-21 14:26:33 - INFO - This is an info message
+2025-11-21 14:26:33 - WARNING - This is a warning message
+2025-11-21 14:26:33 - ERROR - This is an error message
+2025-11-21 14:26:33 - CRITICAL - This is a critical message
+2025-11-21 14:26:33 - INFO - User is an adult.
+2025-11-21 14:26:33 - ERROR - Attempted to divide by zero.
+Traceback (most recent call last):
+  File "c:\Users\steph\OneDrive\Documents\University\Level 3\Level-3\Week 8\Friday - Programming\main.py", line 38, in divide_by_zero_test
+    result = 10 / 0
+             ~~~^~~
+ZeroDivisionError: division by zero
+2025-11-21 14:30:28 - DEBUG - This is a debug message
+2025-11-21 14:30:28 - INFO - This is an info message
+2025-11-21 14:30:28 - WARNING - This is a warning message
+2025-11-21 14:30:28 - ERROR - This is an error message
+2025-11-21 14:30:28 - CRITICAL - This is a critical message
+2025-11-21 14:30:28 - INFO - User is an adult.
+2025-11-21 14:30:28 - ERROR - Attempted to divide by zero.
+Traceback (most recent call last):
+  File "c:\Users\steph\OneDrive\Documents\University\Level 3\Level-3\Week 8\Friday - Programming\main.py", line 46, in divide_by_zero_test
+    result = 10 / 0
+             ~~~^~~
+ZeroDivisionError: division by zero
+2025-11-21 14:32:07 - DEBUG - This is a debug message
+2025-11-21 14:32:07 - INFO - This is an info message
+2025-11-21 14:32:07 - WARNING - This is a warning message
+2025-11-21 14:32:07 - ERROR - This is an error message
+2025-11-21 14:32:07 - CRITICAL - This is a critical message
+2025-11-21 14:32:07 - INFO - User is an adult.
+2025-11-21 14:32:07 - ERROR - Attempted to divide by zero.
+Traceback (most recent call last):
+  File "c:\Users\steph\OneDrive\Documents\University\Level 3\Level-3\Week 8\Friday - Programming\main.py", line 46, in divide_by_zero_test
+    result = 10 / 0
+             ~~~^~~
+ZeroDivisionError: division by zero
+2025-11-21 14:32:16 - DEBUG - This is a debug message
+2025-11-21 14:32:16 - INFO - This is an info message
+2025-11-21 14:32:16 - WARNING - This is a warning message
+2025-11-21 14:32:16 - ERROR - This is an error message
+2025-11-21 14:32:16 - CRITICAL - This is a critical message
+2025-11-21 14:32:16 - INFO - User is an adult.
+2025-11-21 14:32:16 - ERROR - Attempted to divide by zero.
+Traceback (most recent call last):
+  File "c:\Users\steph\OneDrive\Documents\University\Level 3\Level-3\Week 8\Friday - Programming\main.py", line 46, in divide_by_zero_test
+    result = 10 / 0
+             ~~~^~~
+ZeroDivisionError: division by zero
+2025-11-21 14:32:17 - WARNING - First Name: John
+2025-11-21 14:32:17 - DEBUG - Last Name: Doe
