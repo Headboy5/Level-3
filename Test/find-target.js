@@ -31,8 +31,14 @@ export async function main(ns) {
         ns.tprint(`  Max money: $${ns.formatNumber(ns.getServerMaxMoney(bestTarget))}`);
         ns.tprint(`  Required level: ${ns.getServerRequiredHackingLevel(bestTarget)}`);
         ns.tprint(`  Min security: ${ns.getServerMinSecurityLevel(bestTarget)}`);
+        
+        // Write target to port 1 for other scripts to read
+        await ns.writePort(1, bestTarget);
+        return bestTarget;
     } else {
         ns.tprint('No suitable targets found');
+        await ns.writePort(1, null);
+        return null;
     }
 }
 

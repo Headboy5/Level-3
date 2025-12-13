@@ -39,6 +39,11 @@ export async function main(ns) {
     await ns.write('/tmp/grow.js', growScript, 'w');
     await ns.write('/tmp/weaken.js', weakenScript, 'w');
     
+    // Get actual RAM costs for each script
+    const hackRam = ns.getScriptRam('/tmp/hack.js');
+    const growRam = ns.getScriptRam('/tmp/grow.js');
+    const weakenRam = ns.getScriptRam('/tmp/weaken.js');
+    
     let deployed = 0;
     for (const server of servers) {
         if (!ns.hasRootAccess(server)) continue;
@@ -53,18 +58,30 @@ export async function main(ns) {
         
         ns.killall(server);
         
-        // Calculate threads for each script type
-        const ramPerScript = 1.75; // Average RAM cost
-        const totalThreads = Math.floor(maxRam / ramPerScript);
+        // Calculate available RAM
+        const availableRam = maxRam - ns.getServerUsedRam(server);
         
-        // Distribute threads: 50% weaken, 30% grow, 20% hack
-        const weakenThreads = Math.floor(totalThreads * 0.5);
-        const growThreads = Math.floor(totalThreads * 0.3);
-        const hackThreads = Math.floor(totalThreads * 0.2);
+        // Calculate max threads for each script type
+        const maxWeakenThreads = Math.floor(availableRam / weakenRam);
+        const maxGrowThreads = Math.floor(availableRam / growRam);
+        const maxHackThreads = Math.floor(availableRam / hackRam);
+        
+        // Distribute threads: 50% weaken, 30% grow, 20% hack based on RAM
+        const weakenThreads = Math.floor(maxWeakenThreads * 0.5);
+        const growThreads = Math.floor(maxGrowThreads * 0.3);
+        const hackThreads = Math.floor(maxHackThreads * 0.2);
+        
+        // Calculate actual RAM usage to maximize utilization
+        let usedRam = (weakenThreads * weakenRam) + (growThreads * growRam) + (hackThreads * hackRam);
+        let remainingRam = availableRam - usedRam;
+        
+        // Use remaining RAM for additional weaken threads (most important)
+        const bonusWeakenThreads = Math.floor(remainingRam / weakenRam);
+        const finalWeakenThreads = weakenThreads + bonusWeakenThreads;
         
         // Start scripts
-        if (weakenThreads > 0) {
-            ns.exec('/tmp/weaken.js', server, weakenThreads, target);
+        if (finalWeakenThreads > 0) {
+            ns.exec('/tmp/weaken.js', server, finalWeakenThreads, target);
         }
         if (growThreads > 0) {
             ns.exec('/tmp/grow.js', server, growThreads, target);

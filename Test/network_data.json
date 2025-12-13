@@ -1,7 +1,7 @@
 {
   "hostname": "home",
   "hasRoot": true,
-  "money": 25519.721993866147,
+  "money": 2225504.350044096,
   "maxMoney": 0,
   "security": 1,
   "minSecurity": 1,
@@ -13,9 +13,9 @@
     {
       "hostname": "n00dles",
       "hasRoot": true,
-      "money": 102039.51412081608,
+      "money": 335030.48534969054,
       "maxMoney": 1750000,
-      "security": 1.004,
+      "security": 1.7960000000000007,
       "minSecurity": 1,
       "requiredHackingLevel": 1,
       "numPortsRequired": 0,
@@ -39,7 +39,7 @@
     },
     {
       "hostname": "foodnstuff",
-      "hasRoot": false,
+      "hasRoot": true,
       "money": 2000000,
       "maxMoney": 50000000,
       "security": 10,
@@ -52,7 +52,7 @@
     },
     {
       "hostname": "sigma-cosmetics",
-      "hasRoot": false,
+      "hasRoot": true,
       "money": 2300000,
       "maxMoney": 57500000,
       "security": 10,
@@ -65,7 +65,7 @@
     },
     {
       "hostname": "joesguns",
-      "hasRoot": false,
+      "hasRoot": true,
       "money": 2500000,
       "maxMoney": 62500000,
       "security": 15,
@@ -77,7 +77,7 @@
       "connections": [
         {
           "hostname": "nectar-net",
-          "hasRoot": false,
+          "hasRoot": true,
           "money": 2750000,
           "maxMoney": 68750000,
           "security": 20,
@@ -571,7 +571,7 @@
     },
     {
       "hostname": "hong-fang-tea",
-      "hasRoot": false,
+      "hasRoot": true,
       "money": 3000000,
       "maxMoney": 75000000,
       "security": 15,
@@ -584,7 +584,7 @@
     },
     {
       "hostname": "harakiri-sushi",
-      "hasRoot": false,
+      "hasRoot": true,
       "money": 4000000,
       "maxMoney": 100000000,
       "security": 15,
@@ -950,6 +950,19 @@
           "connections": []
         }
       ]
+    },
+    {
+      "hostname": "darkweb",
+      "hasRoot": false,
+      "money": 0,
+      "maxMoney": 0,
+      "security": 1,
+      "minSecurity": 1,
+      "requiredHackingLevel": 1,
+      "numPortsRequired": 5,
+      "maxRam": 0,
+      "growth": 1,
+      "connections": []
     }
   ]
 }
