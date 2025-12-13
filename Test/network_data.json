@@ -1,0 +1,955 @@
+{
+  "hostname": "home",
+  "hasRoot": true,
+  "money": 25519.721993866147,
+  "maxMoney": 0,
+  "security": 1,
+  "minSecurity": 1,
+  "requiredHackingLevel": 1,
+  "numPortsRequired": 5,
+  "maxRam": 8,
+  "growth": 1,
+  "connections": [
+    {
+      "hostname": "n00dles",
+      "hasRoot": true,
+      "money": 102039.51412081608,
+      "maxMoney": 1750000,
+      "security": 1.004,
+      "minSecurity": 1,
+      "requiredHackingLevel": 1,
+      "numPortsRequired": 0,
+      "maxRam": 4,
+      "growth": 3000,
+      "connections": [
+        {
+          "hostname": "CSEC",
+          "hasRoot": false,
+          "money": 0,
+          "maxMoney": 0,
+          "security": 1,
+          "minSecurity": 1,
+          "requiredHackingLevel": 58,
+          "numPortsRequired": 1,
+          "maxRam": 8,
+          "growth": 1,
+          "connections": []
+        }
+      ]
+    },
+    {
+      "hostname": "foodnstuff",
+      "hasRoot": false,
+      "money": 2000000,
+      "maxMoney": 50000000,
+      "security": 10,
+      "minSecurity": 3,
+      "requiredHackingLevel": 1,
+      "numPortsRequired": 0,
+      "maxRam": 16,
+      "growth": 5,
+      "connections": []
+    },
+    {
+      "hostname": "sigma-cosmetics",
+      "hasRoot": false,
+      "money": 2300000,
+      "maxMoney": 57500000,
+      "security": 10,
+      "minSecurity": 3,
+      "requiredHackingLevel": 5,
+      "numPortsRequired": 0,
+      "maxRam": 16,
+      "growth": 10,
+      "connections": []
+    },
+    {
+      "hostname": "joesguns",
+      "hasRoot": false,
+      "money": 2500000,
+      "maxMoney": 62500000,
+      "security": 15,
+      "minSecurity": 5,
+      "requiredHackingLevel": 10,
+      "numPortsRequired": 0,
+      "maxRam": 16,
+      "growth": 20,
+      "connections": [
+        {
+          "hostname": "nectar-net",
+          "hasRoot": false,
+          "money": 2750000,
+          "maxMoney": 68750000,
+          "security": 20,
+          "minSecurity": 7,
+          "requiredHackingLevel": 20,
+          "numPortsRequired": 0,
+          "maxRam": 16,
+          "growth": 25,
+          "connections": [
+            {
+              "hostname": "neo-net",
+              "hasRoot": false,
+              "money": 5000000,
+              "maxMoney": 125000000,
+              "security": 25,
+              "minSecurity": 8,
+              "requiredHackingLevel": 50,
+              "numPortsRequired": 1,
+              "maxRam": 32,
+              "growth": 25,
+              "connections": [
+                {
+                  "hostname": "the-hub",
+                  "hasRoot": false,
+                  "money": 185623214,
+                  "maxMoney": 4640580350,
+                  "security": 39,
+                  "minSecurity": 13,
+                  "requiredHackingLevel": 278,
+                  "numPortsRequired": 2,
+                  "maxRam": 16,
+                  "growth": 47,
+                  "connections": [
+                    {
+                      "hostname": "catalyst",
+                      "hasRoot": false,
+                      "money": 349138548,
+                      "maxMoney": 8728463700,
+                      "security": 64,
+                      "minSecurity": 21,
+                      "requiredHackingLevel": 431,
+                      "numPortsRequired": 3,
+                      "maxRam": 32,
+                      "growth": 25,
+                      "connections": []
+                    }
+                  ]
+                },
+                {
+                  "hostname": "johnson-ortho",
+                  "hasRoot": false,
+                  "money": 83179892,
+                  "maxMoney": 2079497300,
+                  "security": 49,
+                  "minSecurity": 16,
+                  "requiredHackingLevel": 297,
+                  "numPortsRequired": 2,
+                  "maxRam": 0,
+                  "growth": 50,
+                  "connections": [
+                    {
+                      "hostname": "I.I.I.I",
+                      "hasRoot": false,
+                      "money": 0,
+                      "maxMoney": 0,
+                      "security": 1,
+                      "minSecurity": 1,
+                      "requiredHackingLevel": 365,
+                      "numPortsRequired": 3,
+                      "maxRam": 16,
+                      "growth": 1,
+                      "connections": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "hostname": "silver-helix",
+              "hasRoot": false,
+              "money": 45000000,
+              "maxMoney": 1125000000,
+              "security": 30,
+              "minSecurity": 10,
+              "requiredHackingLevel": 150,
+              "numPortsRequired": 2,
+              "maxRam": 64,
+              "growth": 30,
+              "connections": [
+                {
+                  "hostname": "netlink",
+                  "hasRoot": false,
+                  "money": 275000000,
+                  "maxMoney": 6875000000,
+                  "security": 72,
+                  "minSecurity": 24,
+                  "requiredHackingLevel": 395,
+                  "numPortsRequired": 3,
+                  "maxRam": 32,
+                  "growth": 55,
+                  "connections": [
+                    {
+                      "hostname": "rothman-uni",
+                      "hasRoot": false,
+                      "money": 242807692,
+                      "maxMoney": 6070192300,
+                      "security": 54,
+                      "minSecurity": 18,
+                      "requiredHackingLevel": 407,
+                      "numPortsRequired": 3,
+                      "maxRam": 128,
+                      "growth": 35,
+                      "connections": [
+                        {
+                          "hostname": "millenium-fitness",
+                          "hasRoot": false,
+                          "money": 250000000,
+                          "maxMoney": 6250000000,
+                          "security": 51,
+                          "minSecurity": 17,
+                          "requiredHackingLevel": 503,
+                          "numPortsRequired": 3,
+                          "maxRam": 32,
+                          "growth": 39,
+                          "connections": [
+                            {
+                              "hostname": "galactic-cyber",
+                              "hasRoot": false,
+                              "money": 808716102,
+                              "maxMoney": 20217902550,
+                              "security": 55,
+                              "minSecurity": 18,
+                              "requiredHackingLevel": 847,
+                              "numPortsRequired": 5,
+                              "maxRam": 0,
+                              "growth": 80,
+                              "connections": [
+                                {
+                                  "hostname": "deltaone",
+                                  "hasRoot": false,
+                                  "money": 1639749069,
+                                  "maxMoney": 40993726725,
+                                  "security": 81,
+                                  "minSecurity": 27,
+                                  "requiredHackingLevel": 870,
+                                  "numPortsRequired": 5,
+                                  "maxRam": 0,
+                                  "growth": 57,
+                                  "connections": [
+                                    {
+                                      "hostname": "icarus",
+                                      "hasRoot": false,
+                                      "money": 969799052,
+                                      "maxMoney": 24244976300,
+                                      "security": 91,
+                                      "minSecurity": 30,
+                                      "requiredHackingLevel": 917,
+                                      "numPortsRequired": 5,
+                                      "maxRam": 0,
+                                      "growth": 88,
+                                      "connections": [
+                                        {
+                                          "hostname": "infocomm",
+                                          "hasRoot": false,
+                                          "money": 714693635,
+                                          "maxMoney": 17867340875,
+                                          "security": 88,
+                                          "minSecurity": 29,
+                                          "requiredHackingLevel": 923,
+                                          "numPortsRequired": 5,
+                                          "maxRam": 0,
+                                          "growth": 47,
+                                          "connections": [
+                                            {
+                                              "hostname": "titan-labs",
+                                              "hasRoot": false,
+                                              "money": 779761601,
+                                              "maxMoney": 19494040025,
+                                              "security": 79,
+                                              "minSecurity": 26,
+                                              "requiredHackingLevel": 844,
+                                              "numPortsRequired": 5,
+                                              "maxRam": 64,
+                                              "growth": 64,
+                                              "connections": [
+                                                {
+                                                  "hostname": "helios",
+                                                  "hasRoot": false,
+                                                  "money": 662407280,
+                                                  "maxMoney": 16560182000,
+                                                  "security": 92,
+                                                  "minSecurity": 31,
+                                                  "requiredHackingLevel": 889,
+                                                  "numPortsRequired": 5,
+                                                  "maxRam": 32,
+                                                  "growth": 73,
+                                                  "connections": []
+                                                },
+                                                {
+                                                  "hostname": "vitalife",
+                                                  "hasRoot": false,
+                                                  "money": 714760340,
+                                                  "maxMoney": 17869008500,
+                                                  "security": 89,
+                                                  "minSecurity": 30,
+                                                  "requiredHackingLevel": 791,
+                                                  "numPortsRequired": 5,
+                                                  "maxRam": 128,
+                                                  "growth": 77,
+                                                  "connections": [
+                                                    {
+                                                      "hostname": "omnitek",
+                                                      "hasRoot": false,
+                                                      "money": 13230187110,
+                                                      "maxMoney": 330754677750,
+                                                      "security": 94,
+                                                      "minSecurity": 31,
+                                                      "requiredHackingLevel": 954,
+                                                      "numPortsRequired": 5,
+                                                      "maxRam": 256,
+                                                      "growth": 96,
+                                                      "connections": [
+                                                        {
+                                                          "hostname": "powerhouse-fitness",
+                                                          "hasRoot": false,
+                                                          "money": 900000000,
+                                                          "maxMoney": 22500000000,
+                                                          "security": 62,
+                                                          "minSecurity": 21,
+                                                          "requiredHackingLevel": 1052,
+                                                          "numPortsRequired": 5,
+                                                          "maxRam": 64,
+                                                          "growth": 56,
+                                                          "connections": []
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "hostname": "4sigma",
+                                                      "hasRoot": false,
+                                                      "money": 16061816892,
+                                                      "maxMoney": 401545422300,
+                                                      "security": 74,
+                                                      "minSecurity": 25,
+                                                      "requiredHackingLevel": 1219,
+                                                      "numPortsRequired": 5,
+                                                      "maxRam": 0,
+                                                      "growth": 97,
+                                                      "connections": [
+                                                        {
+                                                          "hostname": "b-and-a",
+                                                          "hasRoot": false,
+                                                          "money": 27502687535,
+                                                          "maxMoney": 687567188375,
+                                                          "security": 74,
+                                                          "minSecurity": 25,
+                                                          "requiredHackingLevel": 955,
+                                                          "numPortsRequired": 5,
+                                                          "maxRam": 0,
+                                                          "growth": 63,
+                                                          "connections": []
+                                                        },
+                                                        {
+                                                          "hostname": "nwo",
+                                                          "hasRoot": false,
+                                                          "money": 26943021881,
+                                                          "maxMoney": 673575547025,
+                                                          "security": 99,
+                                                          "minSecurity": 33,
+                                                          "requiredHackingLevel": 1200,
+                                                          "numPortsRequired": 5,
+                                                          "maxRam": 0,
+                                                          "growth": 89,
+                                                          "connections": [
+                                                            {
+                                                              "hostname": "fulcrumassets",
+                                                              "hasRoot": false,
+                                                              "money": 1000000,
+                                                              "maxMoney": 25000000,
+                                                              "security": 99,
+                                                              "minSecurity": 33,
+                                                              "requiredHackingLevel": 1504,
+                                                              "numPortsRequired": 5,
+                                                              "maxRam": 0,
+                                                              "growth": 1,
+                                                              "connections": []
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "hostname": "kuai-gong",
+                                                      "hasRoot": false,
+                                                      "money": 23618806652,
+                                                      "maxMoney": 590470166300,
+                                                      "security": 96,
+                                                      "minSecurity": 32,
+                                                      "requiredHackingLevel": 1242,
+                                                      "numPortsRequired": 5,
+                                                      "maxRam": 0,
+                                                      "growth": 94,
+                                                      "connections": [
+                                                        {
+                                                          "hostname": "blade",
+                                                          "hasRoot": false,
+                                                          "money": 37988846482,
+                                                          "maxMoney": 949721162050,
+                                                          "security": 95,
+                                                          "minSecurity": 32,
+                                                          "requiredHackingLevel": 1178,
+                                                          "numPortsRequired": 5,
+                                                          "maxRam": 256,
+                                                          "growth": 73,
+                                                          "connections": [
+                                                            {
+                                                              "hostname": "The-Cave",
+                                                              "hasRoot": false,
+                                                              "money": 0,
+                                                              "maxMoney": 0,
+                                                              "security": 1,
+                                                              "minSecurity": 1,
+                                                              "requiredHackingLevel": 925,
+                                                              "numPortsRequired": 5,
+                                                              "maxRam": 0,
+                                                              "growth": 1,
+                                                              "connections": []
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "hostname": "microdyne",
+                                              "hasRoot": false,
+                                              "money": 586983795,
+                                              "maxMoney": 14674594875,
+                                              "security": 74,
+                                              "minSecurity": 25,
+                                              "requiredHackingLevel": 848,
+                                              "numPortsRequired": 5,
+                                              "maxRam": 32,
+                                              "growth": 86,
+                                              "connections": [
+                                                {
+                                                  "hostname": "stormtech",
+                                                  "hasRoot": false,
+                                                  "money": 1108678260,
+                                                  "maxMoney": 27716956500,
+                                                  "security": 81,
+                                                  "minSecurity": 27,
+                                                  "requiredHackingLevel": 1019,
+                                                  "numPortsRequired": 5,
+                                                  "maxRam": 0,
+                                                  "growth": 78,
+                                                  "connections": [
+                                                    {
+                                                      "hostname": ".",
+                                                      "hasRoot": false,
+                                                      "money": 0,
+                                                      "maxMoney": 0,
+                                                      "security": 1,
+                                                      "minSecurity": 1,
+                                                      "requiredHackingLevel": 526,
+                                                      "numPortsRequired": 4,
+                                                      "maxRam": 16,
+                                                      "growth": 1,
+                                                      "connections": [
+                                                        {
+                                                          "hostname": "clarkinc",
+                                                          "hasRoot": false,
+                                                          "money": 21520015433,
+                                                          "maxMoney": 538000385825,
+                                                          "security": 54,
+                                                          "minSecurity": 18,
+                                                          "requiredHackingLevel": 1088,
+                                                          "numPortsRequired": 5,
+                                                          "maxRam": 0,
+                                                          "growth": 54,
+                                                          "connections": [
+                                                            {
+                                                              "hostname": "ecorp",
+                                                              "hasRoot": false,
+                                                              "money": 30061207788,
+                                                              "maxMoney": 751530194700,
+                                                              "security": 99,
+                                                              "minSecurity": 33,
+                                                              "requiredHackingLevel": 1220,
+                                                              "numPortsRequired": 5,
+                                                              "maxRam": 0,
+                                                              "growth": 99,
+                                                              "connections": []
+                                                            },
+                                                            {
+                                                              "hostname": "megacorp",
+                                                              "hasRoot": false,
+                                                              "money": 45793780046,
+                                                              "maxMoney": 1144844501150,
+                                                              "security": 99,
+                                                              "minSecurity": 33,
+                                                              "requiredHackingLevel": 1132,
+                                                              "numPortsRequired": 5,
+                                                              "maxRam": 0,
+                                                              "growth": 99,
+                                                              "connections": []
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "hostname": "applied-energetics",
+                                              "hasRoot": false,
+                                              "money": 712350514,
+                                              "maxMoney": 17808762850,
+                                              "security": 70,
+                                              "minSecurity": 23,
+                                              "requiredHackingLevel": 801,
+                                              "numPortsRequired": 4,
+                                              "maxRam": 0,
+                                              "growth": 70,
+                                              "connections": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "hostname": "unitalife",
+                                  "hasRoot": false,
+                                  "money": 1066367282,
+                                  "maxMoney": 26659182050,
+                                  "security": 78,
+                                  "minSecurity": 26,
+                                  "requiredHackingLevel": 809,
+                                  "numPortsRequired": 4,
+                                  "maxRam": 16,
+                                  "growth": 71,
+                                  "connections": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "hostname": "phantasy",
+              "hasRoot": false,
+              "money": 24000000,
+              "maxMoney": 600000000,
+              "security": 20,
+              "minSecurity": 7,
+              "requiredHackingLevel": 100,
+              "numPortsRequired": 2,
+              "maxRam": 32,
+              "growth": 35,
+              "connections": [
+                {
+                  "hostname": "computek",
+                  "hasRoot": false,
+                  "money": 236286674,
+                  "maxMoney": 5907166850,
+                  "security": 60,
+                  "minSecurity": 20,
+                  "requiredHackingLevel": 320,
+                  "numPortsRequired": 3,
+                  "maxRam": 0,
+                  "growth": 49,
+                  "connections": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "hostname": "hong-fang-tea",
+      "hasRoot": false,
+      "money": 3000000,
+      "maxMoney": 75000000,
+      "security": 15,
+      "minSecurity": 5,
+      "requiredHackingLevel": 30,
+      "numPortsRequired": 0,
+      "maxRam": 16,
+      "growth": 20,
+      "connections": []
+    },
+    {
+      "hostname": "harakiri-sushi",
+      "hasRoot": false,
+      "money": 4000000,
+      "maxMoney": 100000000,
+      "security": 15,
+      "minSecurity": 5,
+      "requiredHackingLevel": 40,
+      "numPortsRequired": 0,
+      "maxRam": 16,
+      "growth": 40,
+      "connections": [
+        {
+          "hostname": "zer0",
+          "hasRoot": false,
+          "money": 7500000,
+          "maxMoney": 187500000,
+          "security": 25,
+          "minSecurity": 8,
+          "requiredHackingLevel": 75,
+          "numPortsRequired": 1,
+          "maxRam": 32,
+          "growth": 40,
+          "connections": [
+            {
+              "hostname": "omega-net",
+              "hasRoot": false,
+              "money": 66868364,
+              "maxMoney": 1671709100,
+              "security": 25,
+              "minSecurity": 8,
+              "requiredHackingLevel": 189,
+              "numPortsRequired": 2,
+              "maxRam": 32,
+              "growth": 38,
+              "connections": [
+                {
+                  "hostname": "crush-fitness",
+                  "hasRoot": false,
+                  "money": 49265933,
+                  "maxMoney": 1231648325,
+                  "security": 37,
+                  "minSecurity": 12,
+                  "requiredHackingLevel": 250,
+                  "numPortsRequired": 2,
+                  "maxRam": 0,
+                  "growth": 29,
+                  "connections": [
+                    {
+                      "hostname": "zb-institute",
+                      "hasRoot": false,
+                      "money": 1050840338,
+                      "maxMoney": 26271008450,
+                      "security": 81,
+                      "minSecurity": 27,
+                      "requiredHackingLevel": 726,
+                      "numPortsRequired": 5,
+                      "maxRam": 16,
+                      "growth": 81,
+                      "connections": [
+                        {
+                          "hostname": "rho-construction",
+                          "hasRoot": false,
+                          "money": 534434865,
+                          "maxMoney": 13360871625,
+                          "security": 42,
+                          "minSecurity": 14,
+                          "requiredHackingLevel": 518,
+                          "numPortsRequired": 3,
+                          "maxRam": 64,
+                          "growth": 45,
+                          "connections": [
+                            {
+                              "hostname": "snap-fitness",
+                              "hasRoot": false,
+                              "money": 450000000,
+                              "maxMoney": 11250000000,
+                              "security": 47,
+                              "minSecurity": 16,
+                              "requiredHackingLevel": 738,
+                              "numPortsRequired": 4,
+                              "maxRam": 0,
+                              "growth": 52,
+                              "connections": [
+                                {
+                                  "hostname": "omnia",
+                                  "hasRoot": false,
+                                  "money": 950667410,
+                                  "maxMoney": 23766685250,
+                                  "security": 85,
+                                  "minSecurity": 28,
+                                  "requiredHackingLevel": 889,
+                                  "numPortsRequired": 5,
+                                  "maxRam": 64,
+                                  "growth": 60,
+                                  "connections": [
+                                    {
+                                      "hostname": "defcomm",
+                                      "hasRoot": false,
+                                      "money": 877630851,
+                                      "maxMoney": 21940771275,
+                                      "security": 94,
+                                      "minSecurity": 31,
+                                      "requiredHackingLevel": 1013,
+                                      "numPortsRequired": 5,
+                                      "maxRam": 0,
+                                      "growth": 49,
+                                      "connections": []
+                                    },
+                                    {
+                                      "hostname": "univ-energy",
+                                      "hasRoot": false,
+                                      "money": 1198914627,
+                                      "maxMoney": 29972865675,
+                                      "security": 80,
+                                      "minSecurity": 27,
+                                      "requiredHackingLevel": 858,
+                                      "numPortsRequired": 4,
+                                      "maxRam": 64,
+                                      "growth": 85,
+                                      "connections": [
+                                        {
+                                          "hostname": "taiyang-digital",
+                                          "hasRoot": false,
+                                          "money": 826578511,
+                                          "maxMoney": 20664462775,
+                                          "security": 73,
+                                          "minSecurity": 24,
+                                          "requiredHackingLevel": 893,
+                                          "numPortsRequired": 5,
+                                          "maxRam": 0,
+                                          "growth": 79,
+                                          "connections": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "hostname": "solaris",
+                                      "hasRoot": false,
+                                      "money": 767408729,
+                                      "maxMoney": 19185218225,
+                                      "security": 77,
+                                      "minSecurity": 26,
+                                      "requiredHackingLevel": 813,
+                                      "numPortsRequired": 5,
+                                      "maxRam": 128,
+                                      "growth": 74,
+                                      "connections": [
+                                        {
+                                          "hostname": "zb-def",
+                                          "hasRoot": false,
+                                          "money": 911068910,
+                                          "maxMoney": 22776722750,
+                                          "security": 56,
+                                          "minSecurity": 19,
+                                          "requiredHackingLevel": 818,
+                                          "numPortsRequired": 4,
+                                          "maxRam": 0,
+                                          "growth": 66,
+                                          "connections": [
+                                            {
+                                              "hostname": "run4theh111z",
+                                              "hasRoot": false,
+                                              "money": 0,
+                                              "maxMoney": 0,
+                                              "security": 1,
+                                              "minSecurity": 1,
+                                              "requiredHackingLevel": 550,
+                                              "numPortsRequired": 4,
+                                              "maxRam": 32,
+                                              "growth": 1,
+                                              "connections": [
+                                                {
+                                                  "hostname": "fulcrumtech",
+                                                  "hasRoot": false,
+                                                  "money": 1434059448,
+                                                  "maxMoney": 35851486200,
+                                                  "security": 88,
+                                                  "minSecurity": 29,
+                                                  "requiredHackingLevel": 1245,
+                                                  "numPortsRequired": 5,
+                                                  "maxRam": 128,
+                                                  "growth": 80,
+                                                  "connections": []
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "hostname": "nova-med",
+                                          "hasRoot": false,
+                                          "money": 1224405829,
+                                          "maxMoney": 30610145725,
+                                          "security": 76,
+                                          "minSecurity": 25,
+                                          "requiredHackingLevel": 831,
+                                          "numPortsRequired": 4,
+                                          "maxRam": 0,
+                                          "growth": 79,
+                                          "connections": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "hostname": "zeus-med",
+                                      "hasRoot": false,
+                                      "money": 1368328488,
+                                      "maxMoney": 34208212200,
+                                      "security": 72,
+                                      "minSecurity": 24,
+                                      "requiredHackingLevel": 825,
+                                      "numPortsRequired": 5,
+                                      "maxRam": 0,
+                                      "growth": 74,
+                                      "connections": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "hostname": "alpha-ent",
+                          "hasRoot": false,
+                          "money": 614482458,
+                          "maxMoney": 15362061450,
+                          "security": 62,
+                          "minSecurity": 21,
+                          "requiredHackingLevel": 532,
+                          "numPortsRequired": 4,
+                          "maxRam": 16,
+                          "growth": 60,
+                          "connections": [
+                            {
+                              "hostname": "aerocorp",
+                              "hasRoot": false,
+                              "money": 1039817446,
+                              "maxMoney": 25995436150,
+                              "security": 88,
+                              "minSecurity": 29,
+                              "requiredHackingLevel": 900,
+                              "numPortsRequired": 5,
+                              "maxRam": 0,
+                              "growth": 58,
+                              "connections": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "hostname": "summit-uni",
+                      "hasRoot": false,
+                      "money": 208712042,
+                      "maxMoney": 5217801050,
+                      "security": 59,
+                      "minSecurity": 20,
+                      "requiredHackingLevel": 469,
+                      "numPortsRequired": 3,
+                      "maxRam": 16,
+                      "growth": 46,
+                      "connections": [
+                        {
+                          "hostname": "lexo-corp",
+                          "hasRoot": false,
+                          "money": 710387321,
+                          "maxMoney": 17759683025,
+                          "security": 78,
+                          "minSecurity": 26,
+                          "requiredHackingLevel": 663,
+                          "numPortsRequired": 4,
+                          "maxRam": 32,
+                          "growth": 57,
+                          "connections": [
+                            {
+                              "hostname": "global-pharm",
+                              "hasRoot": false,
+                              "money": 1733709918,
+                              "maxMoney": 43342747950,
+                              "security": 76,
+                              "minSecurity": 25,
+                              "requiredHackingLevel": 798,
+                              "numPortsRequired": 4,
+                              "maxRam": 16,
+                              "growth": 89,
+                              "connections": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "hostname": "avmnite-02h",
+                  "hasRoot": false,
+                  "money": 0,
+                  "maxMoney": 0,
+                  "security": 1,
+                  "minSecurity": 1,
+                  "requiredHackingLevel": 211,
+                  "numPortsRequired": 2,
+                  "maxRam": 32,
+                  "growth": 1,
+                  "connections": [
+                    {
+                      "hostname": "syscore",
+                      "hasRoot": false,
+                      "money": 530970419,
+                      "maxMoney": 13274260475,
+                      "security": 61,
+                      "minSecurity": 20,
+                      "requiredHackingLevel": 554,
+                      "numPortsRequired": 4,
+                      "maxRam": 0,
+                      "growth": 70,
+                      "connections": [
+                        {
+                          "hostname": "aevum-police",
+                          "hasRoot": false,
+                          "money": 292588431,
+                          "maxMoney": 7314710775,
+                          "security": 75,
+                          "minSecurity": 25,
+                          "requiredHackingLevel": 405,
+                          "numPortsRequired": 4,
+                          "maxRam": 16,
+                          "growth": 36,
+                          "connections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "hostname": "iron-gym",
+      "hasRoot": false,
+      "money": 20000000,
+      "maxMoney": 500000000,
+      "security": 30,
+      "minSecurity": 10,
+      "requiredHackingLevel": 100,
+      "numPortsRequired": 1,
+      "maxRam": 32,
+      "growth": 20,
+      "connections": [
+        {
+          "hostname": "max-hardware",
+          "hasRoot": false,
+          "money": 10000000,
+          "maxMoney": 250000000,
+          "security": 15,
+          "minSecurity": 5,
+          "requiredHackingLevel": 80,
+          "numPortsRequired": 1,
+          "maxRam": 32,
+          "growth": 30,
+          "connections": []
+        }
+      ]
+    }
+  ]
+}
