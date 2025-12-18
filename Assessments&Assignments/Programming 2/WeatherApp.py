@@ -42,6 +42,10 @@ class WeatherApp(QtWidgets.QWidget):
         # Dark mode state
         self.dark_mode = False
         
+        # Store current weather data for theme switching
+        self.current_weather_data = None
+        self.current_city_name = None
+        
         # Initialize UI components
         self.init_ui()
         
@@ -455,6 +459,10 @@ class WeatherApp(QtWidgets.QWidget):
         """Toggle between light and dark mode"""
         self.dark_mode = not self.dark_mode
         self.apply_styles()
+        
+        # Refresh weather display if data exists
+        if self.current_weather_data and self.current_city_name:
+            self.display_weather(self.current_weather_data, self.current_city_name)
     
     @QtCore.Slot()
     def search_weather(self):
@@ -577,6 +585,10 @@ class WeatherApp(QtWidgets.QWidget):
             city_name (str): Name of the city searched
         """
         try:
+            # Store data for theme switching
+            self.current_weather_data = weather_data
+            self.current_city_name = city_name
+            
             # Extract location information
             location = weather_data.get("location", {})
             city_display = location.get("name", city_name)
@@ -666,14 +678,14 @@ class WeatherApp(QtWidgets.QWidget):
                     <p style='margin: 15px 0; color: {"#e0e0e0" if self.dark_mode else "#2c3e50"};'><strong>🌧️ Precipitation:</strong> {precipitation} mm</p>
                 </div>
                 
-                <div style='background: {"#1a1a1a" if self.dark_mode else "#fff3cd"}; 
-                            padding: 15px; 
+                <div style='background: {"#2b2b2b" if self.dark_mode else "#fff"}; 
+                            padding: 20px; 
                             border-radius: 8px;
-                            border-left: 4px solid #f39c12;'>
-                    <h3 style='margin: 0 0 10px 0; color: {"#e0e0e0" if self.dark_mode else "#856404"};'>
+                            border: 1px solid {"#444" if self.dark_mode else "#ddd"};'>
+                    <h3 style='margin: 0 0 10px 0; color: {"#e0e0e0" if self.dark_mode else "#2c3e50"};'>
                         💡 Weather Summary
                     </h3>
-                    <p style='margin: 5px 0; line-height: 1.6; color: {"#e0e0e0" if self.dark_mode else "#856404"};'>
+                    <p style='margin: 5px 0; line-height: 1.6; color: {"#e0e0e0" if self.dark_mode else "#2c3e50"};'>
                         {self.get_weather_summary(temperature, humidity, wind_speed, weather_description).replace(chr(10), '<br>')}
                     </p>
                 </div>
