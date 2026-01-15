@@ -7,6 +7,13 @@ graph TB
     
     Browser -->|1. HTTP Request| WebServer
     
+    subgraph "Website vs Webpage"
+        Website[Website<br/>Collection of Pages]
+        Website --> Page1[Homepage]
+        Website --> Page2[About Page]
+        Website --> Page3[Contact Page]
+    end
+    
     subgraph "Client Side - Front End"
         Browser
         Browser --> Render[Render HTML/CSS/JS]
@@ -32,28 +39,8 @@ graph TB
     style WebServer fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
     style App fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
     style DB fill:#f39c12,stroke:#333,stroke-width:2px,color:#fff
+    style Website fill:#27ae60,stroke:#333,stroke-width:2px,color:#fff
+    style Page1 fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
+    style Page2 fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
+    style Page3 fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
 ```
-
-## Front End (Client Side)
-- **Technologies**: HTML, CSS, JavaScript, React, Vue, Angular
-- **Responsibilities**:
-  - User interface and experience
-  - Visual presentation
-  - Client-side validation
-  - User interactions and events
-  - Runs in the user's browser
-
-## Back End (Server Side)
-- **Technologies**: PHP, Node.js, Python, Java, Ruby, C#
-- **Responsibilities**:
-  - Server-side logic
-  - Database operations
-  - Authentication and security
-  - Data processing
-  - API endpoints
-  - Runs on the server
-
-## Communication
-- Front end and back end communicate via **HTTP/HTTPS** protocols
-- Data is typically exchanged in **JSON** or **XML** format
-- RESTful APIs or GraphQL commonly used for data transfer
